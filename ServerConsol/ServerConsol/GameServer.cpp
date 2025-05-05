@@ -3,6 +3,7 @@
 #include "CorePCH.h"
 
 #include <atomic>	
+#include <mutex>
 #include <thread> //스레드를 생성하기 위한 라이브러리
 //다양한 운영체제 환경에 적용 가능하다!
 
@@ -34,8 +35,8 @@ void HelloThread() {
 
 
 
-
-
+//automic 타입 실습
+/*
 
 
 atomic<int32> sum = 0;
@@ -77,4 +78,81 @@ int main() {
 	//데이터를 레지스터로 꺼내오고 계산 후 다시 입력하는 세 단계를 거친다.
 	//때문에 멀티스레드로 위의 동작을 수행 할 시 동작들이 순서대로 동작하지 않으므로
 	//원하는 결과를 내지 못하게 된다.
+}
+
+*/
+
+
+//LOCK 실습
+
+vector<int32> v;
+
+mutex m;
+//Mutual Exclusive 
+//락을 수행한 동작을 진행하는 동안 다른 접근은 불허한다(상호배타적) 
+//문제점
+//1. lock을 재귀적으로 사용해야 할 경우 있다
+//2. lock 호출 후 unlock을 호출하지 않았을 경우
+
+
+//RAII (Resource Acquisition Is Initialization)
+template<typename T>
+class LockGuard {
+public:
+
+	//생성자에서 뮤텍스를 매개변수로 가져와서 lock() 수행
+	LockGuard(T& m) {
+		_mutex = &m;
+		_mutex->lock();
+	}
+
+	//소멸자에서 뮤텍스 unlock() 수행
+	~LockGuard() {
+		_mutex->unlock();
+	}
+
+private:
+	T* _mutex;
+};
+
+
+// STL 에서 사용하던 자료구조 컨테이너들은 멀티스레드 환경에서 동작하지 않는다고 보면 편함
+void Push() {
+	//LockGuard<mutex> lockGuard(m);		//Push()수행시 락 실행
+	//락을 거는 범위에 따라 달라지는것들이 많다.
+	for (int32 i = 0; i < 10000; i++) {
+
+		LockGuard<mutex> lockGuard(m);		//for문 실행시마다 락 실행
+
+		//unique_lock<mutex> uniqueLock(m, defer_lock);		//qunique_lock 타입
+
+
+		//uniqueLock.lock();	//객체만 만들어놓고 lock() 수행은 뒤로 미룰 수 있다.
+
+
+		//m.lock();	//자물쇠 잠그기
+
+		v.push_back(i);
+
+		//m.unlock();	//자물쇠 풀기
+	}
+
+	//벡터 캐패시티가 늘어나는 과정 => 
+	// 1. 기존 데이터 복사
+	// 2. 더 큰 배열에 붙여넣기
+	// 3. 기존 배열 삭제
+	// 멀티쓰레딩 진행되며 세가지 과정 꼬여 크래시 발생 ex) 더블프리 문제, 같은 위치에 두 원소 입력 문제
+	//atomic은 벡터의 세부적인 기능까지는 사용할 수 없기 때문에 automic 타입은 사용할 수 없다
+}
+
+int main() {
+
+
+	thread t1(Push);
+	thread t2(Push);
+
+	t1.join();
+	t2.join();
+
+	cout << v.size() << endl;		//crash 발생
 }
