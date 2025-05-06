@@ -1,2 +1,4 @@
-D:\Transcend\GitHub_desktop\Server_StudyProject\ServerConsol\ServerConsol\GameServer.cpp;D:\Transcend\GitHub_desktop\Server_StudyProject\ServerConsol\ServerConsol\x64\Debug\GameServer.obj
-D:\Transcend\GitHub_desktop\Server_StudyProject\ServerConsol\ServerConsol\pch.cpp;D:\Transcend\GitHub_desktop\Server_StudyProject\ServerConsol\ServerConsol\x64\Debug\pch.obj
+C:\Users\firet\Documents\GitHub\Server_StudyProject\ServerConsol\ServerConsol\AccountManager.cpp;C:\Users\firet\Documents\GitHub\Server_StudyProject\ServerConsol\ServerConsol\x64\Debug\AccountManager.obj
+C:\Users\firet\Documents\GitHub\Server_StudyProject\ServerConsol\ServerConsol\GameServer.cpp;C:\Users\firet\Documents\GitHub\Server_StudyProject\ServerConsol\ServerConsol\x64\Debug\GameServer.obj
+C:\Users\firet\Documents\GitHub\Server_StudyProject\ServerConsol\ServerConsol\pch.cpp;C:\Users\firet\Documents\GitHub\Server_StudyProject\ServerConsol\ServerConsol\x64\Debug\pch.obj
+C:\Users\firet\Documents\GitHub\Server_StudyProject\ServerConsol\ServerConsol\UserManager.cpp;C:\Users\firet\Documents\GitHub\Server_StudyProject\ServerConsol\ServerConsol\x64\Debug\UserManager.obj

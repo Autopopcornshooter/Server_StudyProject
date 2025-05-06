@@ -1,6 +1,8 @@
 ﻿#include "pch.h"
 #include <iostream>
 #include "CorePCH.h"
+#include "AccountManager.h"
+#include "UserManager.h"
 
 #include <atomic>	
 #include <mutex>
@@ -82,7 +84,7 @@ int main() {
 
 */
 
-
+/*
 //LOCK 실습
 
 vector<int32> v;
@@ -92,10 +94,11 @@ mutex m;
 //락을 수행한 동작을 진행하는 동안 다른 접근은 불허한다(상호배타적) 
 //문제점
 //1. lock을 재귀적으로 사용해야 할 경우 있다
-//2. lock 호출 후 unlock을 호출하지 않았을 경우
+//2. lock 호출 후 unlock을 호출하지 않았을 경우(DeadLock)
 
 
 //RAII (Resource Acquisition Is Initialization)
+
 template<typename T>
 class LockGuard {
 public:
@@ -156,3 +159,55 @@ int main() {
 
 	cout << v.size() << endl;		//crash 발생
 }
+
+*/
+
+/*
+
+//DeadLock 실습
+
+//ProcessSave에서는 Usermanager 락 이후 AccountManger 락 수행
+//ProcessLogin()에서는 반대로 수행한다. 서로의 순서가 달라 각자 Lock을 한 상태로
+//서로의 스레드를 막고 있는 상태이다.
+//해결: lock을 수행하는 순서를 통일한다면 먼저 lock을 수행한 스레드가
+// 나머지 lock동작을 수행 한 후 상대 스레드 실행!
+
+//100% 예방할 순 없다..
+//mutex에 id를 할당해서 락을 걸 때마다 id 순서를 파악해서 
+// lock 수행하는 예방방법 존재
+// 
+//lock 매니저를 구현해서 lock이 발생할 때 순서를 추적해서
+//순환이 일어나는 부분을 확인하는 방법도 있다.
+
+void FUNC_1() {
+	for (int32 i = 0; i < 1000; i++) {
+		UserManager::Instance()->ProcessSave();
+	}
+}
+void FUNC_2() {
+	for (int32 i = 0; i < 1000; i++) {
+		AccountManager::Instance()->ProcessLogin();
+	}
+}
+
+int main() {
+	thread t1(FUNC_1);
+	thread t2(FUNC_2);
+
+	t1.join();
+	t2.join();
+
+	cout << "jobs Done" << endl;
+
+	//참고부분
+	mutex m1;
+	mutex m2;
+
+	lock(m1, m2);	
+	//동시에 두개의 뮤텍스를 활용할 때m1.lock(), m2.lock() 순서를 보장해준다
+
+	lock_guard<mutex>(m1, adopt_lock);	
+	//m1은 lock이 걸려있다고 가정(아닐수도 있음) 함수 종료 시 unlock만 수행
+}
+
+*/
