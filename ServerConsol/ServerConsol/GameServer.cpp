@@ -4,8 +4,6 @@
 #include "AccountManager.h"
 #include "UserManager.h"
 
-#include <atomic>	
-#include <mutex>
 #include <thread> //스레드를 생성하기 위한 라이브러리
 //다양한 운영체제 환경에 적용 가능하다!
 
@@ -38,6 +36,8 @@ void HelloThread() {
 
 
 //automic 타입 실습
+#include <atomic>	
+
 /*
 
 
@@ -84,130 +84,302 @@ int main() {
 
 */
 
-/*
 //LOCK 실습
 
-vector<int32> v;
+#include <mutex>
+//
+//vector<int32> v;
+//
+//mutex m;
+////Mutual Exclusive 
+////락을 수행한 동작을 진행하는 동안 다른 접근은 불허한다(상호배타적) 
+////문제점
+////1. lock을 재귀적으로 사용해야 할 경우 있다
+////2. lock 호출 후 unlock을 호출하지 않았을 경우(DeadLock)
+//
+//
+////RAII (Resource Acquisition Is Initialization)
+//
+//template<typename T>
+//class LockGuard {
+//public:
+//
+//	//생성자에서 뮤텍스를 매개변수로 가져와서 lock() 수행
+//	LockGuard(T& m) {
+//		_mutex = &m;
+//		_mutex->lock();
+//	}
+//
+//	//소멸자에서 뮤텍스 unlock() 수행
+//	~LockGuard() {
+//		_mutex->unlock();
+//	}
+//
+//private:
+//	T* _mutex;
+//};
+//
+//
+//// STL 에서 사용하던 자료구조 컨테이너들은 멀티스레드 환경에서 동작하지 않는다고 보면 편함
+//void Push() {
+//	//LockGuard<mutex> lockGuard(m);		//Push()수행시 락 실행
+//	//락을 거는 범위에 따라 달라지는것들이 많다.
+//	for (int32 i = 0; i < 10000; i++) {
+//
+//		LockGuard<mutex> lockGuard(m);		//for문 실행시마다 락 실행
+//
+//		//unique_lock<mutex> uniqueLock(m, defer_lock);		//qunique_lock 타입
+//
+//
+//		//uniqueLock.lock();	//객체만 만들어놓고 lock() 수행은 뒤로 미룰 수 있다.
+//
+//
+//		//m.lock();	//자물쇠 잠그기
+//
+//		v.push_back(i);
+//
+//		//m.unlock();	//자물쇠 풀기
+//	}
+//
+//	//벡터 캐패시티가 늘어나는 과정 => 
+//	// 1. 기존 데이터 복사
+//	// 2. 더 큰 배열에 붙여넣기
+//	// 3. 기존 배열 삭제
+//	// 멀티쓰레딩 진행되며 세가지 과정 꼬여 크래시 발생 ex) 더블프리 문제, 같은 위치에 두 원소 입력 문제
+//	//atomic은 벡터의 세부적인 기능까지는 사용할 수 없기 때문에 automic 타입은 사용할 수 없다
+//}
+//
+//int main() {
+//
+//
+//	thread t1(Push);
+//	thread t2(Push);
+//
+//	t1.join();
+//	t2.join();
+//
+//	cout << v.size() << endl;		//crash 발생
+//}
+//
 
-mutex m;
-//Mutual Exclusive 
-//락을 수행한 동작을 진행하는 동안 다른 접근은 불허한다(상호배타적) 
-//문제점
-//1. lock을 재귀적으로 사용해야 할 경우 있다
-//2. lock 호출 후 unlock을 호출하지 않았을 경우(DeadLock)
 
 
-//RAII (Resource Acquisition Is Initialization)
-
-template<typename T>
-class LockGuard {
-public:
-
-	//생성자에서 뮤텍스를 매개변수로 가져와서 lock() 수행
-	LockGuard(T& m) {
-		_mutex = &m;
-		_mutex->lock();
-	}
-
-	//소멸자에서 뮤텍스 unlock() 수행
-	~LockGuard() {
-		_mutex->unlock();
-	}
-
-private:
-	T* _mutex;
-};
-
-
-// STL 에서 사용하던 자료구조 컨테이너들은 멀티스레드 환경에서 동작하지 않는다고 보면 편함
-void Push() {
-	//LockGuard<mutex> lockGuard(m);		//Push()수행시 락 실행
-	//락을 거는 범위에 따라 달라지는것들이 많다.
-	for (int32 i = 0; i < 10000; i++) {
-
-		LockGuard<mutex> lockGuard(m);		//for문 실행시마다 락 실행
-
-		//unique_lock<mutex> uniqueLock(m, defer_lock);		//qunique_lock 타입
-
-
-		//uniqueLock.lock();	//객체만 만들어놓고 lock() 수행은 뒤로 미룰 수 있다.
-
-
-		//m.lock();	//자물쇠 잠그기
-
-		v.push_back(i);
-
-		//m.unlock();	//자물쇠 풀기
-	}
-
-	//벡터 캐패시티가 늘어나는 과정 => 
-	// 1. 기존 데이터 복사
-	// 2. 더 큰 배열에 붙여넣기
-	// 3. 기존 배열 삭제
-	// 멀티쓰레딩 진행되며 세가지 과정 꼬여 크래시 발생 ex) 더블프리 문제, 같은 위치에 두 원소 입력 문제
-	//atomic은 벡터의 세부적인 기능까지는 사용할 수 없기 때문에 automic 타입은 사용할 수 없다
-}
-
-int main() {
-
-
-	thread t1(Push);
-	thread t2(Push);
-
-	t1.join();
-	t2.join();
-
-	cout << v.size() << endl;		//crash 발생
-}
-
-*/
-
-/*
 
 //DeadLock 실습
+//
+////ProcessSave에서는 Usermanager 락 이후 AccountManger 락 수행
+////ProcessLogin()에서는 반대로 수행한다. 서로의 순서가 달라 각자 Lock을 한 상태로
+////서로의 스레드를 막고 있는 상태이다.
+////해결: lock을 수행하는 순서를 통일한다면 먼저 lock을 수행한 스레드가
+//// 나머지 lock동작을 수행 한 후 상대 스레드 실행!
+////
+////100% 예방할 순 없다..
+////mutex에 id를 할당해서 락을 걸 때마다 id 순서를 파악해서 
+//// lock 수행하는 예방방법 존재
+//// 
+////lock 매니저를 구현해서 lock이 발생할 때 순서를 추적해서
+////순환이 일어나는 부분을 확인하는 방법도 있다.
+//
+//void FUNC_1() {
+//	for (int32 i = 0; i < 1000; i++) {
+//		UserManager::Instance()->ProcessSave();
+//	}
+//}
+//void FUNC_2() {
+//	for (int32 i = 0; i < 1000; i++) {
+//		AccountManager::Instance()->ProcessLogin();
+//	}
+//}
+//
+//int main() {
+//	thread t1(FUNC_1);
+//	thread t2(FUNC_2);
+//
+//	t1.join();
+//	t2.join();
+//
+//	cout << "jobs Done" << endl;
+//
+//	//참고부분
+//	mutex m1;
+//	mutex m2;
+//
+//	lock(m1, m2);	
+//	//동시에 두개의 뮤텍스를 활용할 때m1.lock(), m2.lock() 순서를 보장해준다
+//
+//	lock_guard<mutex>(m1, adopt_lock);	
+//	//m1은 lock이 걸려있다고 가정(아닐수도 있음) 함수 종료 시 unlock만 수행
+//}
 
-//ProcessSave에서는 Usermanager 락 이후 AccountManger 락 수행
-//ProcessLogin()에서는 반대로 수행한다. 서로의 순서가 달라 각자 Lock을 한 상태로
-//서로의 스레드를 막고 있는 상태이다.
-//해결: lock을 수행하는 순서를 통일한다면 먼저 lock을 수행한 스레드가
-// 나머지 lock동작을 수행 한 후 상대 스레드 실행!
 
-//100% 예방할 순 없다..
-//mutex에 id를 할당해서 락을 걸 때마다 id 순서를 파악해서 
-// lock 수행하는 예방방법 존재
-// 
-//lock 매니저를 구현해서 lock이 발생할 때 순서를 추적해서
-//순환이 일어나는 부분을 확인하는 방법도 있다.
 
-void FUNC_1() {
-	for (int32 i = 0; i < 1000; i++) {
-		UserManager::Instance()->ProcessSave();
-	}
+
+
+
+//SpinLock 구현	=> lock상태일 때 대기 스레드가 개별자원을 반납하지 않고 무한정 대기
+//lock상태가 계속 이어질 경우 CPU 점유율 상승이 오점이 될 수 있음
+
+//
+//class SpinLock {
+//public:
+//
+//	void lock() {
+//		//_lock을 체크하는 while문과 lock을 시도하는 코드가 두 단계로 나눠져서 발생하는 문제임
+//		//두 코드가 동기화(동시에 작동)되어야 한다.
+//		//CAS(Comapre-And-Swap)두 코드를 동기하는 것
+//
+//		bool expected = false;
+//		bool desired = true;
+//
+//		while (_locked.compare_exchange_strong(expected, desired)==false) {
+//
+//			expected = false;
+//
+//		}
+//		//compare_exchange_strong : CAS 함수 중 하나
+//		//풀이
+//		/*
+//		if (_locked == expected) {
+//
+//			expected = false;
+//			_locked = desired;
+//			return true;
+//		}
+//		else {
+//
+//			expected = _locked;	//실시간 _locked 상태 체크
+//			return false;
+//		}
+//		*/
+//	}
+//
+//	void unlock() {
+//		_locked.store(false);
+//	}
+//
+//private:
+//	atomic<bool> _locked = false;
+//	//volatile-> 최적화 중지 명령
+//	//어셈블리 단계에서 while문 수행 시 최적화 수행의 일종으로 변수체크를 생략하는 경우 있음
+//};
+//
+//
+//mutex m;
+//int32 sum=0;
+//SpinLock spinlock;
+//
+//void Add() {
+//
+//	for (int i = 0; i < 100000; i++) {
+//		lock_guard<SpinLock> guard(spinlock);
+//		sum++;
+//	}
+//}
+//void Sub() {
+//
+//	for (int i = 0; i < 100000; i++) {
+//		lock_guard<SpinLock> guard(spinlock);
+//		sum--;
+//	}
+//}
+//
+//
+//int main() {
+//
+//	thread t1(Add);
+//	thread t2(Sub);
+//
+//	t1.join();
+//	t2.join();
+//
+//	cout << sum << endl;
+//}
+
+
+
+//Sleep 실습: 
+// 타임슬라이스를 모두 소진하기 전에 자발적으로 커널 레벨로 실행 권한을 넘겨주는 것
+//
+//class SpinLock {
+//public:
+//
+//	void lock() {
+//	
+//
+//		bool expected = false;
+//		bool desired = true;
+//
+//		while (_locked.compare_exchange_strong(expected, desired) == false) {
+//
+//			expected = false;
+//
+//			//this_thread::sleep_for(std::chrono::milliseconds(100));
+//			this_thread::sleep_for(0ms);
+//			//타임슬라이스 양보 후 100ms 동안 스케줄링되지 않는다
+//			//this_thread::yield();
+//			//타임슬라이스 양보 후 CPU에 스케줄링 맡김 sleep_for(0ms)와 동일
+//		}
+//		
+//	}
+//
+//	void unlock() {
+//		_locked.store(false);
+//	}
+//
+//private:
+//	atomic<bool> _locked = false;
+//	
+//};
+//
+//
+//mutex m;
+//int32 sum = 0;
+//SpinLock spinlock;
+//
+//void Add() {
+//
+//	for (int i = 0; i < 100000; i++) {
+//		lock_guard<SpinLock> guard(spinlock);
+//		sum++;
+//	}
+//}
+//void Sub() {
+//
+//	for (int i = 0; i < 100000; i++) {
+//		lock_guard<SpinLock> guard(spinlock);
+//		sum--;
+//	}
+//}
+//
+//
+//int main() {
+//
+//	thread t1(Add);
+//	thread t2(Sub);
+//
+//	t1.join();
+//	t2.join();
+//
+//	cout << sum << endl;
+//}
+
+
+//Event 실습:
+//관리자에게 스레드 실행 순서 보장을 요청하는것
+//수행완료된 스레드가 관리자를 통해 이벤트 변경 => 대기중인 스레드가 현재 상태를 읽을 수 있다.
+
+
+#include <Windows.h>
+
+queue<int32>q;
+
+void Producer() {
+
 }
-void FUNC_2() {
-	for (int32 i = 0; i < 1000; i++) {
-		AccountManager::Instance()->ProcessLogin();
-	}
-}
 
+void Consuer() {
+
+}
 int main() {
-	thread t1(FUNC_1);
-	thread t2(FUNC_2);
 
-	t1.join();
-	t2.join();
-
-	cout << "jobs Done" << endl;
-
-	//참고부분
-	mutex m1;
-	mutex m2;
-
-	lock(m1, m2);	
-	//동시에 두개의 뮤텍스를 활용할 때m1.lock(), m2.lock() 순서를 보장해준다
-
-	lock_guard<mutex>(m1, adopt_lock);	
-	//m1은 lock이 걸려있다고 가정(아닐수도 있음) 함수 종료 시 unlock만 수행
 }
-
-*/
