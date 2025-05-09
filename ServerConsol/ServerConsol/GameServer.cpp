@@ -367,19 +367,140 @@ int main() {
 //Event 실습:
 //관리자에게 스레드 실행 순서 보장을 요청하는것
 //수행완료된 스레드가 관리자를 통해 이벤트 변경 => 대기중인 스레드가 현재 상태를 읽을 수 있다.
+//커널 오브젝트를 사용하여 추가적인 자원을 필요로 하기 때문에
+//자주 스레드 전환이 일어나는 부분에서는 지양할 필요가 있다.
+
+
+//
+//#include <Windows.h>
+//
+//queue<int32>q;
+//mutex m;
+//HANDLE handle;
+// //HANDLE은 커널 레벨 객체를 관리하기 위한 '참조값'
+//void Producer() {
+//	while (true) {
+//
+//		{
+//			unique_lock<mutex> lock(m);
+//			q.push(100);
+//		}
+//		::SetEvent(handle);
+//		
+//		this_thread::sleep_for(100ms);
+//		//시간이 늘어날수록 Consumer 스레드는 무한정 대기해야 한다.
+//		//CPU점유율 사용
+//	}
+//
+//}
+//
+//void Consumer() {
+//	while (true) {
+//
+//		::WaitForSingleObject(handle, INFINITE);
+//		//커널에게 handle이 signal 상태가 될 때 까지 Sleep을 수행하게 된다
+//		//signal 상태가 된다면 다음 줄부터 수행
+//		//자동리셋 상태일 때: handle을 Non-Signal 상태로 바꿔줌
+//		//수동리셋 상태일 때:
+//		// ResetEvent(handle); 함수를 호출해 상태를 Non-Signal로 바꿔줘야 함
+//
+//		//변종으로 커넥션 Variable 방법이 또 있다
+//
+//		unique_lock<mutex>	lock(m);
+//		if (!q.empty()) {
+//			int32 data = q.front();
+//			q.pop();
+//			cout << data << endl;
+//		}
+//	}
+//}
+//int main() {
+//	//커널 오브젝트
+//	//커널 레벨에서 관리하는 오브젝트
+//	// 기본적 속성들
+//	//Usage Count
+//	//Signal / Non-Signal << bool
+//	//Auto / Manual <<bool
+//
+//	handle = ::CreateEvent(NULL/*보안속성관련인자*/, FALSE /*bManualReset*/, FALSE/*bInitialState*/, NULL);
+//
+//
+//	thread t1(Producer);
+//	thread t2(Consumer);
+//
+//	t1.join();
+//	t2.join();
+//
+//	::CloseHandle(handle);		//메모리 누수 방지
+//
+//}
+
+
+//Condition Variable 실습
 
 
 #include <Windows.h>
 
 queue<int32>q;
+mutex m;
+HANDLE handle;
+
+
+condition_variable cv;		//mutex 와 상호작용
+//User-Level Object (커널오브젝트가 아니다)
+//동일한 프로그램 내부에서만 사용 가능
 
 void Producer() {
+	while (true) {
+		
+		//
+
+
+		{
+			unique_lock<mutex> lock(m);
+			q.push(100);
+		}
+
+		cv.notify_one(); //wait중인 스레드가 있다면 1개를 깨운다(단 하나?)
+		
+		//this_thread::sleep_for(100ms);
+
+	}
 
 }
 
-void Consuer() {
+void Consumer() {
+	while (true) {
+		unique_lock<mutex>	lock(m);	//lock 객체만 생성
+		cv.wait(lock, []() {return q.empty() == false; });
+		// 1. lock 시도
+		// 2. wait 함수 조건 확인
+		// 3-1. 만족 시 코드 이어서 진행
+		// 3-2. 불만족 시 Lock을 풀고 대기상태로 전환
+		// **wait함수에서는 임의로 lock을 풀어줘야 할 수 있어야 하기 때문에 인자로 unique_lock을 사용한다
+		// notify_one()이 호출되었을 때 깨어난 상황이 원하는 조건이 아닌 상황일 수 있다(Spurious Wakeup)
+		// => notify_one() 시점에서 lock()을 수행하는것이 아니기 때문
 
+		//while (!q.empty()) 
+		 {
+			int32 data = q.front();
+			q.pop();
+			cout << q.size() << endl;
+		}
+	}
 }
 int main() {
+
+
+	//handle = ::CreateEvent(NULL/*보안속성관련인자*/, FALSE /*bManualReset*/, FALSE/*bInitialState*/, NULL);
+
+
+	thread t1(Producer);
+	thread t2(Consumer);
+
+	t1.join();
+	t2.join();
+
+	//::CloseHandle(handle);
 
 }
