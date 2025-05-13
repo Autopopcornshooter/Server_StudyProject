@@ -7,6 +7,9 @@
       "RelativeMoniker": "D:0:0:{7CE524A7-568B-40D1-952F-448FBB9EA02F}|ServerConsol\\ServerConsol.vcxproj|solutionrelative:ServerConsol\\GameServer.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{7CE524A7-568B-40D1-952F-448FBB9EA02F}|ServerConsol\\ServerConsol.vcxproj|D:\\PROGRAM FILES\\MICROSOFT VISUAL STUDIO\\2022\\COMMUNITY\\VC\\TOOLS\\MSVC\\14.40.33807\\INCLUDE\\THREAD||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{7CE524A7-568B-40D1-952F-448FBB9EA02F}|ServerConsol\\ServerConsol.vcxproj|D:\\Transcend\\GitHub_desktop\\Server_StudyProject\\ServerConsol\\ServerConsol\\UserManager.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{7CE524A7-568B-40D1-952F-448FBB9EA02F}|ServerConsol\\ServerConsol.vcxproj|solutionrelative:ServerConsol\\UserManager.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
@@ -62,11 +65,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 214,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 13,
               "Title": "pch.h",
               "DocumentMoniker": "D:\\Transcend\\GitHub_desktop\\Server_StudyProject\\ServerConsol\\ServerCore\\pch.h",
               "RelativeDocumentMoniker": "ServerCore\\pch.h",
@@ -79,7 +82,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
+              "Title": "thread",
+              "DocumentMoniker": "D:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.40.33807\\include\\thread",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.40.33807\\include\\thread",
+              "ToolTip": "D:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.40.33807\\include\\thread",
+              "RelativeToolTip": "..\\..\\..\\..\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.40.33807\\include\\thread",
+              "ViewState": "AQIAACYAAAAAAAAAAADgvzsAAAANAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-05-13T10:59:08.917Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "AccountManager.h",
               "DocumentMoniker": "D:\\Transcend\\GitHub_desktop\\Server_StudyProject\\ServerConsol\\ServerConsol\\AccountManager.h",
               "RelativeDocumentMoniker": "ServerConsol\\AccountManager.h",
@@ -97,14 +113,14 @@
               "RelativeDocumentMoniker": "ServerConsol\\GameServer.cpp",
               "ToolTip": "D:\\Transcend\\GitHub_desktop\\Server_StudyProject\\ServerConsol\\ServerConsol\\GameServer.cpp",
               "RelativeToolTip": "ServerConsol\\GameServer.cpp",
-              "ViewState": "AQIAAL0BAAAAAAAAAAAAANoBAAAGAAAA",
+              "ViewState": "AQIAACoCAAAAAAAAAAAAAEQCAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-04-25T15:06:02.467Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "DummyClient.cpp",
               "DocumentMoniker": "D:\\Transcend\\GitHub_desktop\\Server_StudyProject\\ServerConsol\\DummyClient\\DummyClient.cpp",
               "RelativeDocumentMoniker": "DummyClient\\DummyClient.cpp",
@@ -116,7 +132,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "CorePCH.h",
               "DocumentMoniker": "D:\\Transcend\\GitHub_desktop\\Server_StudyProject\\ServerConsol\\ServerCore\\CorePCH.h",
               "RelativeDocumentMoniker": "ServerCore\\CorePCH.h",
@@ -128,7 +144,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "pch.h",
               "DocumentMoniker": "D:\\Transcend\\GitHub_desktop\\Server_StudyProject\\ServerConsol\\ServerConsol\\pch.h",
               "RelativeDocumentMoniker": "ServerConsol\\pch.h",
@@ -140,7 +156,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "pch.h",
               "DocumentMoniker": "D:\\Transcend\\GitHub_desktop\\Server_StudyProject\\ServerConsol\\DummyClient\\pch.h",
               "RelativeDocumentMoniker": "DummyClient\\pch.h",
@@ -152,7 +168,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 12,
               "Title": "Types.h",
               "DocumentMoniker": "D:\\Transcend\\GitHub_desktop\\Server_StudyProject\\ServerConsol\\ServerCore\\Types.h",
               "RelativeDocumentMoniker": "ServerCore\\Types.h",
@@ -170,7 +186,7 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "UserManager.cpp",
               "DocumentMoniker": "D:\\Transcend\\GitHub_desktop\\Server_StudyProject\\ServerConsol\\ServerConsol\\UserManager.cpp",
               "RelativeDocumentMoniker": "ServerConsol\\UserManager.cpp",
@@ -183,7 +199,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "UserManager.h",
               "DocumentMoniker": "D:\\Transcend\\GitHub_desktop\\Server_StudyProject\\ServerConsol\\ServerConsol\\UserManager.h",
               "RelativeDocumentMoniker": "ServerConsol\\UserManager.h",
@@ -195,7 +211,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "AccountManager.cpp",
               "DocumentMoniker": "D:\\Transcend\\GitHub_desktop\\Server_StudyProject\\ServerConsol\\ServerConsol\\AccountManager.cpp",
               "RelativeDocumentMoniker": "ServerConsol\\AccountManager.cpp",
@@ -207,7 +223,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "CorePCH.cpp",
               "DocumentMoniker": "D:\\Transcend\\GitHub_desktop\\Server_StudyProject\\ServerConsol\\ServerCore\\CorePCH.cpp",
               "RelativeDocumentMoniker": "ServerCore\\CorePCH.cpp",
@@ -219,7 +235,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "pch.cpp",
               "DocumentMoniker": "D:\\Transcend\\GitHub_desktop\\Server_StudyProject\\ServerConsol\\ServerConsol\\pch.cpp",
               "RelativeDocumentMoniker": "ServerConsol\\pch.cpp",

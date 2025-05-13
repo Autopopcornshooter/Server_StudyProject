@@ -439,68 +439,186 @@ int main() {
 //Condition Variable 실습
 
 
-#include <Windows.h>
+//#include <Windows.h>
+//
+//queue<int32>q;
+//mutex m;
+//HANDLE handle;
+//
+//
+//condition_variable cv;		//mutex 와 상호작용
+////User-Level Object (커널오브젝트가 아니다)
+////동일한 프로그램 내부에서만 사용 가능
+//
+//void Producer() {
+//	while (true) {
+//		
+//		//
+//
+//
+//		{
+//			unique_lock<mutex> lock(m);
+//			q.push(100);
+//		}
+//
+//		cv.notify_one(); //wait중인 스레드가 있다면 1개를 깨운다(단 하나?)
+//		
+//		//this_thread::sleep_for(100ms);
+//
+//	}
+//
+//}
+//
+//void Consumer() {
+//	while (true) {
+//		unique_lock<mutex>	lock(m);	//lock 객체만 생성
+//		cv.wait(lock, []() {return q.empty() == false; });
+//		// 1. lock 시도
+//		// 2. wait 함수 조건 확인
+//		// 3-1. 만족 시 코드 이어서 진행
+//		// 3-2. 불만족 시 Lock을 풀고 대기상태로 전환
+//		// **wait함수에서는 임의로 lock을 풀어줘야 할 수 있어야 하기 때문에 인자로 unique_lock을 사용한다
+//		// notify_one()이 호출되었을 때 깨어난 상황이 원하는 조건이 아닌 상황일 수 있다(Spurious Wakeup)
+//		// => notify_one() 시점에서 lock()을 수행하는것이 아니기 때문
+//
+//		//while (!q.empty()) 
+//		 {
+//			int32 data = q.front();
+//			q.pop();
+//			cout << q.size() << endl;
+//		}
+//	}
+//}
+//int main() {
+//
+//
+//	//handle = ::CreateEvent(NULL/*보안속성관련인자*/, FALSE /*bManualReset*/, FALSE/*bInitialState*/, NULL);
+//
+//
+//	thread t1(Producer);
+//	thread t2(Consumer);
+//
+//	t1.join();
+//	t2.join();
+//
+//	//::CloseHandle(handle);
+//
+//}
 
-queue<int32>q;
-mutex m;
-HANDLE handle;
+
+//Future 실습
+//std::future 미래 객체
+//단발성 함수를 비동기 방식으로 실행하고 싶을 때
+//특히 한 번 발생하는 이벤트에 유용하다.
+
+#include <future>
+
+int64 result;
+
+int64 Calculate() {
+	int64 sum = 0;
+
+	for (int32 i = 0; i < 1000000; i++) {
+		sum += i;
+	}
+
+	return sum;
+}
+
+void PromiseWorker(std::promise<string>&& promise) {
+	promise.set_value("Secret Message");
+}
+
+void TaskWorker(std::packaged_task<int64(void)>&& task) {
+	
+	task();
+	//결과물을 리턴방식으로 받지 않는다
+	//객체 자체를 통해서 결과물을 참조할 수 있다
+}
+
+int main() {
+	// 동기 실행(synchronous)
+	//함수 호출 시 모든 코드를 순서대로 수행
+	//문제발생 : 코드의 크기가 엄청나게 크다면 코드를 모두 수행할동안 다른 동작 불가
+	int64 sum_1 = Calculate();
+
+	thread t(Calculate);	
+	//반환받으려면 전역변수 해야된다.(번거로움)
+	// 간단한 코드를 수행하는데 스레드까지 직접 생성해야 해야 한다
+
+	{
+		// 1) deferred -> lazy evaluation 지연 실행(나중에 future.get()호출 시 실행)
+		// 2) async -> 별도의 스레드를 만들어서 실행(비동기 방식으로 실행하다가 future.get()시점에 값 반환
+		// 3) deferred | async	-> 둘 중 알아서 골라 실행(?)
+		std::future<int64> future = std::async(std::launch::async, Calculate);
+
+		//TODO
+
+		std::future_status status = future.wait_for(1ms);
+		if (status == future_status::ready) {
+			//수행이 끝났는지 판단
+		}
+
+		int64 sum = future.get();
 
 
-condition_variable cv;		//mutex 와 상호작용
-//User-Level Object (커널오브젝트가 아니다)
-//동일한 프로그램 내부에서만 사용 가능
+		//std::promise를 통한 future 사용방법
+		{
+			//미래에 결과물 반환을 약속하는 것
+			std::promise<string>promise;
+			std::future<string> future=promise.get_future();
 
-void Producer() {
-	while (true) {
-		
-		//
+			thread t(PromiseWorker, std::move(promise));	
+			//스레드 PromiseWorker t 로 promise 스레드 소유권 이동
 
+			string message = future.get();
+			cout << message << endl;
+
+			t.join();
+		}
+
+		//std::packaged_task
 
 		{
-			unique_lock<mutex> lock(m);
-			q.push(100);
-		}
+			std::packaged_task<int64(void)>task(Calculate);
+			
+			std::future<int64> future = task.get_future();
 
-		cv.notify_one(); //wait중인 스레드가 있다면 1개를 깨운다(단 하나?)
+			std::thread t(TaskWorker, std::move(task));
+
+			int64 sum = future.get();
+			cout << sum << endl;
+
+			t.join();
+		}
 		
-		//this_thread::sleep_for(100ms);
+		
+		//mutex, CV를 써 lock 걸지 않고 단순한 함수 처리에 유용
+		// 1) async
+		//	원하는 함수를 비동기적으로 실행
+		// 2) promise
+		//	결과물을 promise 를 통해 future로 받아줌
+		// 3) packaged_task
+		//	원하는 함수의 실행 결과를 packaged_task를 통해 future로 받아줌
+
+
+
+		//{
+		//	class Knight
+		//	{
+		//	public:
+		//		int64 GetHP() { return 100; }
+
+		//	};
+
+		//	Knight knight;
+		//	std::future<int64> future2 = std::async(std::launch::async, Knight::GetHP, knight);
+		//	//멤버 변수 호출 시 의존하는 클래스 객체를 인자로 넣어줘야함
+		//}
 
 	}
 
-}
+	t.join();
 
-void Consumer() {
-	while (true) {
-		unique_lock<mutex>	lock(m);	//lock 객체만 생성
-		cv.wait(lock, []() {return q.empty() == false; });
-		// 1. lock 시도
-		// 2. wait 함수 조건 확인
-		// 3-1. 만족 시 코드 이어서 진행
-		// 3-2. 불만족 시 Lock을 풀고 대기상태로 전환
-		// **wait함수에서는 임의로 lock을 풀어줘야 할 수 있어야 하기 때문에 인자로 unique_lock을 사용한다
-		// notify_one()이 호출되었을 때 깨어난 상황이 원하는 조건이 아닌 상황일 수 있다(Spurious Wakeup)
-		// => notify_one() 시점에서 lock()을 수행하는것이 아니기 때문
-
-		//while (!q.empty()) 
-		 {
-			int32 data = q.front();
-			q.pop();
-			cout << q.size() << endl;
-		}
-	}
-}
-int main() {
-
-
-	//handle = ::CreateEvent(NULL/*보안속성관련인자*/, FALSE /*bManualReset*/, FALSE/*bInitialState*/, NULL);
-
-
-	thread t1(Producer);
-	thread t2(Consumer);
-
-	t1.join();
-	t2.join();
-
-	//::CloseHandle(handle);
 
 }
