@@ -14,9 +14,9 @@ void HelloThread() {
 //int main()
 //{	
 //
-//	thread t;	//스레드 객체 먼저 선언 후에 원하는 스레드 할당이 가능하다
+//	std::thread t;	//스레드 객체 먼저 선언 후에 원하는 스레드 할당이 가능하다
 //	//현재 get_id()는 0
-//	t = thread(HelloThread);	//main 스레드와 독립적으로 실행되는 스레드 t 생성
+//	t = std::thread(HelloThread);	//main 스레드와 독립적으로 실행되는 스레드 t 생성
 //	//스레드가 살아있는지(할당되어있는지)반환
 //
 //	int32 count = t.hardware_concurrency();
@@ -56,7 +56,7 @@ atomic<int32> sum = 0;
 
 int Add() {
 	for (int i = 0; i < 1000000; i++) {
-		sum.fetch_add(1);
+		sum.fetch_add(1);	//멀티스레드에서 안전한 방법
 		//sum++;
 	}
 }
@@ -511,114 +511,164 @@ int main() {
 //단발성 함수를 비동기 방식으로 실행하고 싶을 때
 //특히 한 번 발생하는 이벤트에 유용하다.
 
-#include <future>
 
-int64 result;
+//
+//#include <future>
+//
+//int64 result;
+//
+//int64 Calculate() {
+//	int64 sum = 0;
+//
+//	for (int32 i = 0; i < 1000000; i++) {
+//		sum += i;
+//	}
+//
+//	return sum;
+//}
+//
+//void PromiseWorker(std::promise<string>&& promise) {
+//	promise.set_value("Secret Message");
+//}
+//
+//void TaskWorker(std::packaged_task<int64(void)>&& task) {
+//	
+//	task();
+//	//결과물을 리턴방식으로 받지 않는다
+//	//객체 자체를 통해서 결과물을 참조할 수 있다
+//}
+//
+//int main() {
+//	// 동기 실행(synchronous)
+//	//함수 호출 시 모든 코드를 순서대로 수행
+//	//문제발생 : 코드의 크기가 엄청나게 크다면 코드를 모두 수행할동안 다른 동작 불가
+//	int64 sum_1 = Calculate();
+//
+//	thread t(Calculate);	
+//	//반환받으려면 전역변수 해야된다.(번거로움)
+//	// 간단한 코드를 수행하는데 스레드까지 직접 생성해야 해야 한다
+//
+//	{
+//		// 1) deferred -> lazy evaluation 지연 실행(나중에 future.get()호출 시 실행)
+//		// 2) async -> 별도의 스레드를 만들어서 실행(비동기 방식으로 실행하다가 future.get()시점에 값 반환
+//		// 3) deferred | async	-> 둘 중 알아서 골라 실행(?)
+//		std::future<int64> future = std::async(std::launch::async, Calculate);
+//
+//		//TODO
+//
+//		std::future_status status = future.wait_for(1ms);
+//		if (status == future_status::ready) {
+//			//수행이 끝났는지 판단
+//		}
+//
+//		int64 sum = future.get();
+//
+//
+//		//std::promise를 통한 future 사용방법
+//		{
+//			//미래에 결과물 반환을 약속하는 것
+//			std::promise<string>promise;
+//			std::future<string> future=promise.get_future();
+//
+//			thread t(PromiseWorker, std::move(promise));	
+//			//스레드 PromiseWorker t 로 promise 스레드 소유권 이동
+//
+//			string message = future.get();
+//			cout << message << endl;
+//
+//			t.join();
+//		}
+//
+//		//std::packaged_task
+//
+//		{
+//			std::packaged_task<int64(void)>task(Calculate);
+//			
+//			std::future<int64> future = task.get_future();
+//
+//			std::thread t(TaskWorker, std::move(task));
+//			//task는 함수를 수동으로 호출하여 실행하거나 thread로 넘겨야 한다.
+//			int64 sum = future.get();
+//			cout << sum << endl;
+//
+//			t.join();
+//		}
+//		
+//		
+//		//mutex, CV를 써 lock 걸지 않고 단순한 함수 처리에 유용
+//		// 1) async
+//		//	원하는 함수를 비동기적으로 실행
+//		// 2) promise
+//		//	결과물을 promise 를 통해 future로 받아줌
+//		// 3) packaged_task
+//		//	원하는 함수의 실행 결과를 packaged_task를 통해 future로 받아줌
+//
+//
+//
+//		//{
+//		//	class Knight
+//		//	{
+//		//	public:
+//		//		int64 GetHP() { return 100; }
+//
+//		//	};
+//
+//		//	Knight knight;
+//		//	std::future<int64> future2 = std::async(std::launch::async, Knight::GetHP, knight);
+//		//	//멤버 변수 호출 시 의존하는 클래스 객체를 인자로 넣어줘야함
+//		//}
+//
+//	}
+//
+//	t.join();
+//
+//
+//}
 
-int64 Calculate() {
-	int64 sum = 0;
 
-	for (int32 i = 0; i < 1000000; i++) {
-		sum += i;
-	}
+//Cache(캐시) 실습
+//캐시 지역성: 속도는 캐시 지역성이 높을수록 빠르다
+// 1) 시간 지역성(Temporal Locality) : 최근에 사용했던 데이터의 재참조 가능성이 높음
+// 2) 공간 지역성(Spatial Locality) : 최근에 사용했던 데이터와 인접한 데이터가 참조될 가능성이 높음
+#include <Windows.h>
 
-	return sum;
-}
-
-void PromiseWorker(std::promise<string>&& promise) {
-	promise.set_value("Secret Message");
-}
-
-void TaskWorker(std::packaged_task<int64(void)>&& task) {
-	
-	task();
-	//결과물을 리턴방식으로 받지 않는다
-	//객체 자체를 통해서 결과물을 참조할 수 있다
-}
+int32 buffer[10000][10000];
 
 int main() {
-	// 동기 실행(synchronous)
-	//함수 호출 시 모든 코드를 순서대로 수행
-	//문제발생 : 코드의 크기가 엄청나게 크다면 코드를 모두 수행할동안 다른 동작 불가
-	int64 sum_1 = Calculate();
+	memset(buffer, 1, sizeof(buffer));
+	
 
-	thread t(Calculate);	
-	//반환받으려면 전역변수 해야된다.(번거로움)
-	// 간단한 코드를 수행하는데 스레드까지 직접 생성해야 해야 한다
 
 	{
-		// 1) deferred -> lazy evaluation 지연 실행(나중에 future.get()호출 시 실행)
-		// 2) async -> 별도의 스레드를 만들어서 실행(비동기 방식으로 실행하다가 future.get()시점에 값 반환
-		// 3) deferred | async	-> 둘 중 알아서 골라 실행(?)
-		std::future<int64> future = std::async(std::launch::async, Calculate);
+		uint64 start = GetTickCount64();
 
-		//TODO
+		int64 sum = 0;
 
-		std::future_status status = future.wait_for(1ms);
-		if (status == future_status::ready) {
-			//수행이 끝났는지 판단
+		for (int32 i = 0; i < 10000; i++) {
+			for (int32 j = 0; j < 10000; j++) {
+				sum += buffer[i][j];
+			}
 		}
 
-		int64 sum = future.get();
-
-
-		//std::promise를 통한 future 사용방법
-		{
-			//미래에 결과물 반환을 약속하는 것
-			std::promise<string>promise;
-			std::future<string> future=promise.get_future();
-
-			thread t(PromiseWorker, std::move(promise));	
-			//스레드 PromiseWorker t 로 promise 스레드 소유권 이동
-
-			string message = future.get();
-			cout << message << endl;
-
-			t.join();
-		}
-
-		//std::packaged_task
-
-		{
-			std::packaged_task<int64(void)>task(Calculate);
-			
-			std::future<int64> future = task.get_future();
-
-			std::thread t(TaskWorker, std::move(task));
-
-			int64 sum = future.get();
-			cout << sum << endl;
-
-			t.join();
-		}
-		
-		
-		//mutex, CV를 써 lock 걸지 않고 단순한 함수 처리에 유용
-		// 1) async
-		//	원하는 함수를 비동기적으로 실행
-		// 2) promise
-		//	결과물을 promise 를 통해 future로 받아줌
-		// 3) packaged_task
-		//	원하는 함수의 실행 결과를 packaged_task를 통해 future로 받아줌
-
-
-
-		//{
-		//	class Knight
-		//	{
-		//	public:
-		//		int64 GetHP() { return 100; }
-
-		//	};
-
-		//	Knight knight;
-		//	std::future<int64> future2 = std::async(std::launch::async, Knight::GetHP, knight);
-		//	//멤버 변수 호출 시 의존하는 클래스 객체를 인자로 넣어줘야함
-		//}
-
+		uint64 end = GetTickCount64();
+		cout << "Elapsed Tick " << (end - start) << endl;
+		cout << sum << endl;
 	}
+	//첫번째 인덱스 그룹의 원소들 참조(공간 지역성 높음)
 
-	t.join();
+	{
+		uint64 start = GetTickCount64();
 
+		int64 sum = 0;
+		for (int32 i = 0; i < 10000; i++) {
+			for (int32 j = 0; j < 10000; j++) {
+				sum += buffer[j][i];
+			}
+		}
 
+		uint64 end = GetTickCount64();
+		cout << "Elapsed Tick " << (end - start) << endl;
+		cout << sum << endl;
+	}
+	//각 첫번째 인덱스 그룹의 첫번째 원소들부터 참조(공간 지역성 낮음)
 }

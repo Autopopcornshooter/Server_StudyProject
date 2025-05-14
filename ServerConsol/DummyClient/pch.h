@@ -7,7 +7,7 @@
 #pragma comment(lib,"Debug\\ServerCore.lib")//전처리기단계에서 실행
 
 #else
-#pragma comment(lib, ""Release\\ServerCore.lib")
+#pragma comment(lib, "Release\\ServerCore.lib")
 
 #endif // DEBUG
 
