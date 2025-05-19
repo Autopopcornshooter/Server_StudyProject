@@ -15,7 +15,7 @@ void HelloThread() {
 //{	
 //
 //	std::thread t;	//스레드 객체 먼저 선언 후에 원하는 스레드 할당이 가능하다
-//	//현재 get_id()는 0
+//	//현재 get_id()는 undefined ID
 //	t = std::thread(HelloThread);	//main 스레드와 독립적으로 실행되는 스레드 t 생성
 //	//스레드가 살아있는지(할당되어있는지)반환
 //
@@ -75,7 +75,8 @@ int main() {
 	t_1.join();
 	t_2.join();
 	cout << sum << endl;
-	//위 코드의 답은 0이 아니다
+
+
 	//sum++ 동작을 수행 할 때 어셈블리어 단계에서는
 	//데이터를 레지스터로 꺼내오고 계산 후 다시 입력하는 세 단계를 거친다.
 	//때문에 멀티스레드로 위의 동작을 수행 할 시 동작들이 순서대로 동작하지 않으므로
@@ -120,7 +121,7 @@ int main() {
 //};
 //
 //
-//// STL 에서 사용하던 자료구조 컨테이너들은 멀티스레드 환경에서 동작하지 않는다고 보면 편함
+//// STL 컨테이너는 자체적으로 동기화를 제공하지 않기 때문에 멀티스레드 환경에서는 사용 시 주의가 필요하다
 //void Push() {
 //	//LockGuard<mutex> lockGuard(m);		//Push()수행시 락 실행
 //	//락을 거는 범위에 따라 달라지는것들이 많다.
@@ -630,45 +631,214 @@ int main() {
 //캐시 지역성: 속도는 캐시 지역성이 높을수록 빠르다
 // 1) 시간 지역성(Temporal Locality) : 최근에 사용했던 데이터의 재참조 가능성이 높음
 // 2) 공간 지역성(Spatial Locality) : 최근에 사용했던 데이터와 인접한 데이터가 참조될 가능성이 높음
-#include <Windows.h>
 
-int32 buffer[10000][10000];
+//
+//#include <Windows.h>
+//
+//int32 buffer[10000][10000];
+//
+//int main() {
+//	memset(buffer, 1, sizeof(buffer));
+//	
+//
+//
+//	{
+//		uint64 start = GetTickCount64();
+//
+//		int64 sum = 0;
+//
+//		for (int32 i = 0; i < 10000; i++) {
+//			for (int32 j = 0; j < 10000; j++) {
+//				sum += buffer[i][j];
+//			}
+//		}
+//
+//		uint64 end = GetTickCount64();
+//		cout << "Elapsed Tick " << (end - start) << endl;
+//		cout << sum << endl;
+//	}
+//	//첫번째 인덱스 그룹의 원소들 참조(공간 지역성 높음)
+//
+//	{
+//		uint64 start = GetTickCount64();
+//
+//		int64 sum = 0;
+//		for (int32 i = 0; i < 10000; i++) {
+//			for (int32 j = 0; j < 10000; j++) {
+//				sum += buffer[j][i];
+//			}
+//		}
+//
+//		uint64 end = GetTickCount64();
+//		cout << "Elapsed Tick " << (end - start) << endl;
+//		cout << sum << endl;
+//	}
+//	//각 첫번째 인덱스 그룹의 첫번째 원소들부터 참조(공간 지역성 낮음)
+//}
 
-int main() {
-	memset(buffer, 1, sizeof(buffer));
-	
 
 
-	{
-		uint64 start = GetTickCount64();
+//CPU 파이프라인에 대한 실습
 
-		int64 sum = 0;
+//가시성의 문제:
+// 1) 스레드는 각기 다른 코어가 연산을 수행함
+// 2) 각 코어는 데이터에 대한 빠른 접근을 위해 캐시 사용
+// 3) 변경된 데이터가 캐시에는 store 되었지만 메모리에는 업데이트되지 않음
+// 4) 다른 스레드는 메모리에서 변경 이전의 데이터를 load하게 됨
+// 해결책: 변수에 volatile 처리를 해주면 된다.(캐시에 저장안하고 메모리에 바로 store)
 
-		for (int32 i = 0; i < 10000; i++) {
-			for (int32 j = 0; j < 10000; j++) {
-				sum += buffer[i][j];
-			}
-		}
+//코드 재배치의 문제
+// CPU와 컴파일러에서 시간 단축의 일환으로 코드 순서가 바뀔 수 있다
+// CPU 파이프라인 단계 Fetch, Decode, Execute, Write-back 를 진행한다
+// (단일 스레드 기준)코드 순서를 바꾸면 효율적으로 동작할것이라고 판단한다면 코드 순서가 바뀔 수 있다.
+// 이 문제는 프로그래머가 정확히 파악할 수 없다.
 
-		uint64 end = GetTickCount64();
-		cout << "Elapsed Tick " << (end - start) << endl;
-		cout << sum << endl;
-	}
-	//첫번째 인덱스 그룹의 원소들 참조(공간 지역성 높음)
+//
+//int32 x = 0;
+//int32 y = 0;
+//int32 r1 = 0;
+//int32 r2 = 0;
+//
+//volatile bool ready;
+//
+//void Thread_1() {
+//
+//	while (!ready)
+//		;
+//	
+//
+//	y = 1;	//Store y
+//	r1 = x;	//Load x
+//
+//}
+//
+//void Thread_2() {
+//
+//	while (!ready)
+//		;
+//
+//	x = 1;	//Store x
+//	r2 = y;	//Load y
+//
+//}
+//
+//int main() {
+//
+//	int32 count = 0;
+//
+//	while (true) {
+//		ready = false;
+//		count++;
+//
+//		x = y = r1 = r2 = 0;
+//		
+//		thread t1(Thread_1);
+//		thread t2(Thread_2);
+//		
+//		ready = true;
+//
+//		t1.join();
+//		t2.join();
+//
+//		if (r1 == 0 && r2 == 0) {
+//			break;		//정상적인 파이프라인이라면 만족되지 않을 조건문
+//		}
+//	}
+//
+//	cout << count << " 번만에 빠져나옴" << endl;
+//}
 
-	{
-		uint64 start = GetTickCount64();
 
-		int64 sum = 0;
-		for (int32 i = 0; i < 10000; i++) {
-			for (int32 j = 0; j < 10000; j++) {
-				sum += buffer[j][i];
-			}
-		}
 
-		uint64 end = GetTickCount64();
-		cout << "Elapsed Tick " << (end - start) << endl;
-		cout << sum << endl;
-	}
-	//각 첫번째 인덱스 그룹의 첫번째 원소들부터 참조(공간 지역성 낮음)
+
+//메모리 모델(Memory Model) 실습
+
+// 원자적 연산에 의해 객체에 대한 1회 이상의 값 수정이 있을 시
+// 모든 쓰레드는 동일 객체에 대해서 동일한 수정 순서를 관찰한다
+//
+//atomic<bool> flag;
+//int main() {
+//	flag = false;
+//
+//	cout << flag.is_lock_free() << endl;	
+//	//락을 걸 필요가 없는지 판단 true: lock을 걸지 않음, false : lock이 필요함
+//
+//	flag.store(true,memory_order_seq_cst);
+//	
+//	bool val = flag.load();
+//
+//	//이전 flag값을 prev에 넣고, flag값 수정
+//	{
+//		
+//		/*bool prev = flag;		
+//		flag = true;*/
+//		//prev의 유효성을 확보하기 위해 위의 두 과정이 원자적으로 일어나야 함
+//		bool prev = flag.exchange(true);
+//		//exchange: 인자로 값 변경, 이전값을 반환
+//	}
+//
+//	//CAS (Compare-And-Swap) 조건부 수정(원자적 수행)
+//	{
+//		bool expected = false;
+//		bool desired = true;
+//
+//		flag.compare_exchange_strong(expected, desired);
+//		// Spurious Failure이 발생해도(false반환) 성공하는 상황이 나올 때 까지 코드 반복
+//		// compare_exchage_weak 대비 부하가 크다
+//
+//		flag.compare_exchange_weak(expected, desired);
+//		// Spurious Failure이 발생하면 false 반환
+//	}
+//	
+//	
+//}
+
+void Producer() {
+	value = 10;
+
+	ready.store(true, memory_order_seq_cst);
 }
+
+void Consumer() {
+
+	while (ready.load(memory_order_seq_cst) == false);
+
+	
+}
+
+atomic<bool> ready;
+int32 value;
+int main() {
+	ready = false;
+	value = 0;
+
+	thread t1(Producer);
+	thread t2(Consumer);
+
+
+	t1.join();
+	t2.join();
+
+	//메모리 모델 (정책)
+	// 1) Sequeantially Consistent (memory_order_seq_cst)
+	//		컴파일러 최적화 여지가 적음 = 코드 재배치 확률이 적다 = 직관적
+	//		가시성 문제와 코드 재배치 문제를 한번에 해결이 가능하다.
+
+	// 2) Acquire-Release (acquire, release)
+	//		relase 이전의 메모리 명령들이, 해당 명령을 기준으로 앞과 뒤의 코드가 서로 재배치되는것을 금지
+	//		acquire 이후에 접근하는 데이터들의 가시성을 확보해준다
+	//		
+
+	// 3) Relaxed (relaxed)
+	//		컴파일러 최적화 여지가 많음 = 코드 재배치 확률 높음 = 덜 직관적
+	//		매우 자유롭다 = 가시성문제 X, 코드 재배치 문제X
+	//		동일 객체 동일 수정 순서만 지켜진다.(가장 기본적인 조건)
+
+	// 인텔과 AMD CPU 칩은 순차적 일관성을 보장한다
+	// seq_cst 를 사용해도 부하의 차이 없음
+	// ARM의 경우 부하의 차이가 꽤 있다고 함
+}
+
+//찾아볼것: atomic에 대한것
+
+
