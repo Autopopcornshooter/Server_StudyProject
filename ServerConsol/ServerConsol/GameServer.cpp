@@ -793,52 +793,125 @@ int main() {
 //	
 //}
 
-void Producer() {
-	value = 10;
 
-	ready.store(true, memory_order_seq_cst);
+//메모리 모델 3가지 실습 
+//
+//void Producer() {
+//	value = 10;
+//
+//	ready.store(true, memory_order_seq_cst);
+//}
+//
+//void Consumer() {
+//
+//	while (ready.load(memory_order_seq_cst) == false);
+//
+//	
+//}
+//
+//atomic<bool> ready;
+//int32 value;
+//int main() {
+//	ready = false;
+//	value = 0;
+//
+//	thread t1(Producer);
+//	thread t2(Consumer);
+//
+//
+//	t1.join();
+//	t2.join();
+//
+//	//메모리 모델 (정책)
+//	// 1) Sequeantially Consistent (memory_order_seq_cst)
+//	//		컴파일러 최적화 여지가 적음 = 코드 재배치 확률이 적다 = 직관적
+//	//		가시성 문제와 코드 재배치 문제를 한번에 해결이 가능하다.
+//
+//	// 2) Acquire-Release (acquire, release)
+//	//		relase 이전의 메모리 명령들이, 해당 명령을 기준으로 앞과 뒤의 코드가 서로 재배치되는것을 금지
+//	//		acquire 이후에 접근하는 데이터들의 가시성을 확보해준다
+//	//		
+//
+//	// 3) Relaxed (relaxed)
+//	//		컴파일러 최적화 여지가 많음 = 코드 재배치 확률 높음 = 덜 직관적
+//	//		매우 자유롭다 = 가시성문제 X, 코드 재배치 문제X
+//	//		동일 객체 동일 수정 순서만 지켜진다.(가장 기본적인 조건)
+//
+//	// 인텔과 AMD CPU 칩은 순차적 일관성을 보장한다
+//	// seq_cst 를 사용해도 부하의 차이 없음
+//	// ARM의 경우 부하의 차이가 꽤 있다고 함
+//}
+//
+////찾아볼것: atomic에 대한것
+//
+
+//
+////Thread Local Storage 실습
+//
+//thread_local int32 LThreadID = 0;
+// //TLS 변수는 스레드 생성시 복사되어 각 스레드 내부에서만 사용할 수 있다.
+////로그 버퍼와 같이 스레드마다 독립적인 데이터를 유지해야 하는 경우
+////성능상의 이유로 락 없이 상태를 유지해야 할 때
+//
+//void ThreadMain(int32 threadID) {
+//	LThreadID = threadID;
+//
+//	while (true) {
+//		cout << "Hi! I am THread " << LThreadID << endl;
+//		this_thread::sleep_for(1s);
+//	}
+//}
+//
+//int main() {
+//
+//	vector<thread> threads;
+//
+//	for (int32 i = 0; i < 10; i++) {
+//		int32 threadID = i + 1;
+//		threads.push_back(thread(ThreadMain, threadID));
+//	}
+//
+//	for (thread& t : threads)
+//		t.join();
+//	
+//}
+
+//Lock-Based Stack/Queue 실습
+
+
+#include "ConcurrentQueue.h"
+#include "ConcurrentStack.h"
+LockQueue<int32> q;
+LockStack<int32> s;
+
+void Push() {
+	while (true) {
+
+		int32 value = rand() % 100;
+
+		q.Push(value);
+
+		this_thread::sleep_for(10ms);
+	}
 }
 
-void Consumer() {
+void Pop() {
+	while (true) {
 
-	while (ready.load(memory_order_seq_cst) == false);
+		int32 data = 0;
+		if (q.TryPop(data))
+			cout << data << endl;
 
-	
+	}
 }
 
-atomic<bool> ready;
-int32 value;
 int main() {
-	ready = false;
-	value = 0;
 
-	thread t1(Producer);
-	thread t2(Consumer);
-
+	thread t1(Push);
+	thread t2(Pop);
 
 	t1.join();
 	t2.join();
-
-	//메모리 모델 (정책)
-	// 1) Sequeantially Consistent (memory_order_seq_cst)
-	//		컴파일러 최적화 여지가 적음 = 코드 재배치 확률이 적다 = 직관적
-	//		가시성 문제와 코드 재배치 문제를 한번에 해결이 가능하다.
-
-	// 2) Acquire-Release (acquire, release)
-	//		relase 이전의 메모리 명령들이, 해당 명령을 기준으로 앞과 뒤의 코드가 서로 재배치되는것을 금지
-	//		acquire 이후에 접근하는 데이터들의 가시성을 확보해준다
-	//		
-
-	// 3) Relaxed (relaxed)
-	//		컴파일러 최적화 여지가 많음 = 코드 재배치 확률 높음 = 덜 직관적
-	//		매우 자유롭다 = 가시성문제 X, 코드 재배치 문제X
-	//		동일 객체 동일 수정 순서만 지켜진다.(가장 기본적인 조건)
-
-	// 인텔과 AMD CPU 칩은 순차적 일관성을 보장한다
-	// seq_cst 를 사용해도 부하의 차이 없음
-	// ARM의 경우 부하의 차이가 꽤 있다고 함
 }
-
-//찾아볼것: atomic에 대한것
 
 
