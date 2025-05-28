@@ -48,3 +48,63 @@ private:
 	mutex _mutex;
 	condition_variable _condVar;
 };
+
+template<typename T>
+
+class LockFreeStack {
+
+	struct Node {
+		Node(const T& value) :data(value) {
+
+		}
+
+		T data;
+		Node* next;
+	};
+
+
+public:
+	
+	void Push(const T& value) {
+		Node* node = new Node(value);
+
+
+		//node->next = _head;
+		////LockFreeStack객체를 동시에 여러 스레드가 사용한다면 해당 과정에서 race condition 발생가능
+		//_head = node;
+
+		node->next = _head;
+
+		while (_head.compare_exchange_strong(node->next, node) == false) {
+			//compare_exchange_strong 사용으로 race condition 발생 시 재수행
+			
+		}
+
+	
+	}
+	// head 읽기
+	// head->next 읽기
+	// head= head->next
+	// data를 추출하여 반환
+	// 추출한 노드 삭제
+
+	bool TryPop(T& value) {
+		Node* oldHead = _head;
+
+		while (!oldHead && _head.compare_exchange_strong(oldHead, oldHead->next)==false) {
+
+		}
+		value = oldHead->data;
+		
+		
+		//delete oldHead;	//삭제 보류(메모리가 계속해서 늘어난다!!!!)
+		//다른 스레드에서 먼저 이 동작을 수행해버린다면 접근할 데이터가 없어지게 됨
+		//c#, java는 GC가 알아서 메모리 삭제를 진행해주긴 한다.
+
+
+		return true;
+	}
+
+private:
+	atomic<Node*> _head;
+};

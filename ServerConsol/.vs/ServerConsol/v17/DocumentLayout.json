@@ -3,63 +3,16 @@
   "WorkspaceRootPath": "D:\\Transcend\\GitHub_desktop\\Server_StudyProject\\ServerConsol\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{7CE524A7-568B-40D1-952F-448FBB9EA02F}|ServerConsol\\ServerConsol.vcxproj|D:\\Transcend\\GitHub_desktop\\Server_StudyProject\\ServerConsol\\ServerConsol\\GameServer.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{7CE524A7-568B-40D1-952F-448FBB9EA02F}|ServerConsol\\ServerConsol.vcxproj|solutionrelative:ServerConsol\\GameServer.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{7CE524A7-568B-40D1-952F-448FBB9EA02F}|ServerConsol\\ServerConsol.vcxproj|D:\\Transcend\\GitHub_desktop\\Server_StudyProject\\ServerConsol\\ServerConsol\\ConcurrentStack.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{7CE524A7-568B-40D1-952F-448FBB9EA02F}|ServerConsol\\ServerConsol.vcxproj|solutionrelative:ServerConsol\\ConcurrentStack.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{7CE524A7-568B-40D1-952F-448FBB9EA02F}|ServerConsol\\ServerConsol.vcxproj|D:\\Transcend\\GitHub_desktop\\Server_StudyProject\\ServerConsol\\ServerConsol\\ConcurrentQueue.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{7CE524A7-568B-40D1-952F-448FBB9EA02F}|ServerConsol\\ServerConsol.vcxproj|solutionrelative:ServerConsol\\ConcurrentQueue.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7CE524A7-568B-40D1-952F-448FBB9EA02F}|ServerConsol\\ServerConsol.vcxproj|D:\\Transcend\\GitHub_desktop\\Server_StudyProject\\ServerConsol\\ServerConsol\\GameServer.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{7CE524A7-568B-40D1-952F-448FBB9EA02F}|ServerConsol\\ServerConsol.vcxproj|solutionrelative:ServerConsol\\GameServer.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7CE524A7-568B-40D1-952F-448FBB9EA02F}|ServerConsol\\ServerConsol.vcxproj|D:\\Transcend\\GitHub_desktop\\Server_StudyProject\\ServerConsol\\ServerConsol\\UserManager.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{7CE524A7-568B-40D1-952F-448FBB9EA02F}|ServerConsol\\ServerConsol.vcxproj|solutionrelative:ServerConsol\\UserManager.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7CE524A7-568B-40D1-952F-448FBB9EA02F}|ServerConsol\\ServerConsol.vcxproj|D:\\Transcend\\GitHub_desktop\\Server_StudyProject\\ServerConsol\\ServerConsol\\UserManager.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{7CE524A7-568B-40D1-952F-448FBB9EA02F}|ServerConsol\\ServerConsol.vcxproj|solutionrelative:ServerConsol\\UserManager.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7CE524A7-568B-40D1-952F-448FBB9EA02F}|ServerConsol\\ServerConsol.vcxproj|D:\\Transcend\\GitHub_desktop\\Server_StudyProject\\ServerConsol\\ServerConsol\\AccountManager.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{7CE524A7-568B-40D1-952F-448FBB9EA02F}|ServerConsol\\ServerConsol.vcxproj|solutionrelative:ServerConsol\\AccountManager.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7CE524A7-568B-40D1-952F-448FBB9EA02F}|ServerConsol\\ServerConsol.vcxproj|D:\\Transcend\\GitHub_desktop\\Server_StudyProject\\ServerConsol\\ServerConsol\\AccountManager.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{7CE524A7-568B-40D1-952F-448FBB9EA02F}|ServerConsol\\ServerConsol.vcxproj|solutionrelative:ServerConsol\\AccountManager.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{AD66D672-F19C-42DE-B9C5-618D5D8D96CE}|DummyClient\\DummyClient.vcxproj|D:\\Transcend\\GitHub_desktop\\Server_StudyProject\\ServerConsol\\DummyClient\\DummyClient.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{AD66D672-F19C-42DE-B9C5-618D5D8D96CE}|DummyClient\\DummyClient.vcxproj|solutionrelative:DummyClient\\DummyClient.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7CE524A7-568B-40D1-952F-448FBB9EA02F}|ServerConsol\\ServerConsol.vcxproj|D:\\Transcend\\GitHub_desktop\\Server_StudyProject\\ServerConsol\\ServerConsol\\pch.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{7CE524A7-568B-40D1-952F-448FBB9EA02F}|ServerConsol\\ServerConsol.vcxproj|solutionrelative:ServerConsol\\pch.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7CE524A7-568B-40D1-952F-448FBB9EA02F}|ServerConsol\\ServerConsol.vcxproj|D:\\Transcend\\GitHub_desktop\\Server_StudyProject\\ServerConsol\\ServerConsol\\pch.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{7CE524A7-568B-40D1-952F-448FBB9EA02F}|ServerConsol\\ServerConsol.vcxproj|solutionrelative:ServerConsol\\pch.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{18C05EDB-9FC7-4B12-9817-B694C3787374}|ServerCore\\ServerCore.vcxproj|D:\\Transcend\\GitHub_desktop\\Server_StudyProject\\ServerConsol\\ServerCore\\CorePCH.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{18C05EDB-9FC7-4B12-9817-B694C3787374}|ServerCore\\ServerCore.vcxproj|solutionrelative:ServerCore\\CorePCH.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{18C05EDB-9FC7-4B12-9817-B694C3787374}|ServerCore\\ServerCore.vcxproj|D:\\Transcend\\GitHub_desktop\\Server_StudyProject\\ServerConsol\\ServerCore\\CorePCH.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{18C05EDB-9FC7-4B12-9817-B694C3787374}|ServerCore\\ServerCore.vcxproj|solutionrelative:ServerCore\\CorePCH.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{18C05EDB-9FC7-4B12-9817-B694C3787374}|ServerCore\\ServerCore.vcxproj|D:\\Transcend\\GitHub_desktop\\Server_StudyProject\\ServerConsol\\ServerCore\\Types.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{18C05EDB-9FC7-4B12-9817-B694C3787374}|ServerCore\\ServerCore.vcxproj|solutionrelative:ServerCore\\Types.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{18C05EDB-9FC7-4B12-9817-B694C3787374}|ServerCore\\ServerCore.vcxproj|D:\\Transcend\\GitHub_desktop\\Server_StudyProject\\ServerConsol\\ServerCore\\pch.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{18C05EDB-9FC7-4B12-9817-B694C3787374}|ServerCore\\ServerCore.vcxproj|solutionrelative:ServerCore\\pch.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.40.33807\\include\\thread||{3B902123-F8A7-4915-9F01-361F908088D0}"
     }
   ],
   "DocumentGroupContainers": [
@@ -69,198 +22,51 @@
       "DocumentGroups": [
         {
           "DockedWidth": 214,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "pch.h",
-              "DocumentMoniker": "D:\\Transcend\\GitHub_desktop\\Server_StudyProject\\ServerConsol\\ServerCore\\pch.h",
-              "RelativeDocumentMoniker": "ServerCore\\pch.h",
-              "ToolTip": "D:\\Transcend\\GitHub_desktop\\Server_StudyProject\\ServerConsol\\ServerCore\\pch.h",
-              "RelativeToolTip": "ServerCore\\pch.h",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-04-25T15:16:21.995Z",
-              "IsPinned": true
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "ConcurrentStack.h",
               "DocumentMoniker": "D:\\Transcend\\GitHub_desktop\\Server_StudyProject\\ServerConsol\\ServerConsol\\ConcurrentStack.h",
               "RelativeDocumentMoniker": "ServerConsol\\ConcurrentStack.h",
               "ToolTip": "D:\\Transcend\\GitHub_desktop\\Server_StudyProject\\ServerConsol\\ServerConsol\\ConcurrentStack.h",
               "RelativeToolTip": "ServerConsol\\ConcurrentStack.h",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAAAAoAAAAxAAAA",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAALAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-05-20T10:47:20.638Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ConcurrentQueue.h",
-              "DocumentMoniker": "D:\\Transcend\\GitHub_desktop\\Server_StudyProject\\ServerConsol\\ServerConsol\\ConcurrentQueue.h",
-              "RelativeDocumentMoniker": "ServerConsol\\ConcurrentQueue.h",
-              "ToolTip": "D:\\Transcend\\GitHub_desktop\\Server_StudyProject\\ServerConsol\\ServerConsol\\ConcurrentQueue.h",
-              "RelativeToolTip": "ServerConsol\\ConcurrentQueue.h",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABcAAAAKAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-05-20T10:47:04.09Z",
+              "WhenOpened": "2025-05-28T10:15:47.077Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
+              "Title": "ConcurrentQueue.h",
+              "DocumentMoniker": "D:\\Transcend\\GitHub_desktop\\Server_StudyProject\\ServerConsol\\ServerConsol\\ConcurrentQueue.h",
+              "RelativeDocumentMoniker": "ServerConsol\\ConcurrentQueue.h",
+              "ToolTip": "D:\\Transcend\\GitHub_desktop\\Server_StudyProject\\ServerConsol\\ServerConsol\\ConcurrentQueue.h",
+              "RelativeToolTip": "ServerConsol\\ConcurrentQueue.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-05-28T10:15:45.689Z"
+            }
+          ]
+        },
+        {
+          "DockedWidth": 214,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
               "Title": "GameServer.cpp",
               "DocumentMoniker": "D:\\Transcend\\GitHub_desktop\\Server_StudyProject\\ServerConsol\\ServerConsol\\GameServer.cpp",
               "RelativeDocumentMoniker": "ServerConsol\\GameServer.cpp",
               "ToolTip": "D:\\Transcend\\GitHub_desktop\\Server_StudyProject\\ServerConsol\\ServerConsol\\GameServer.cpp",
               "RelativeToolTip": "ServerConsol\\GameServer.cpp",
-              "ViewState": "AQIAAG4DAAAAAAAAAAAAAIIDAAAPAAAA",
+              "ViewState": "AgIAANAAAAAAAAAAAAAhwOUAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-04-25T15:06:02.467Z",
+              "WhenOpened": "2025-05-28T10:15:41.855Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "DummyClient.cpp",
-              "DocumentMoniker": "D:\\Transcend\\GitHub_desktop\\Server_StudyProject\\ServerConsol\\DummyClient\\DummyClient.cpp",
-              "RelativeDocumentMoniker": "DummyClient\\DummyClient.cpp",
-              "ToolTip": "D:\\Transcend\\GitHub_desktop\\Server_StudyProject\\ServerConsol\\DummyClient\\DummyClient.cpp",
-              "RelativeToolTip": "DummyClient\\DummyClient.cpp",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-04-25T15:07:16.063Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "CorePCH.h",
-              "DocumentMoniker": "D:\\Transcend\\GitHub_desktop\\Server_StudyProject\\ServerConsol\\ServerCore\\CorePCH.h",
-              "RelativeDocumentMoniker": "ServerCore\\CorePCH.h",
-              "ToolTip": "D:\\Transcend\\GitHub_desktop\\Server_StudyProject\\ServerConsol\\ServerCore\\CorePCH.h",
-              "RelativeToolTip": "ServerCore\\CorePCH.h",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAASAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-04-25T15:17:12.903Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "pch.h",
-              "DocumentMoniker": "D:\\Transcend\\GitHub_desktop\\Server_StudyProject\\ServerConsol\\ServerConsol\\pch.h",
-              "RelativeDocumentMoniker": "ServerConsol\\pch.h",
-              "ToolTip": "D:\\Transcend\\GitHub_desktop\\Server_StudyProject\\ServerConsol\\ServerConsol\\pch.h",
-              "RelativeToolTip": "ServerConsol\\pch.h",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-04-25T15:33:02.305Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "thread",
-              "DocumentMoniker": "D:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.40.33807\\include\\thread",
-              "RelativeDocumentMoniker": "..\\..\\..\\..\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.40.33807\\include\\thread",
-              "ToolTip": "D:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.40.33807\\include\\thread",
-              "RelativeToolTip": "..\\..\\..\\..\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.40.33807\\include\\thread",
-              "ViewState": "AQIAACYAAAAAAAAAAADgvzsAAAANAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2025-05-13T10:59:08.917Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "Types.h",
-              "DocumentMoniker": "D:\\Transcend\\GitHub_desktop\\Server_StudyProject\\ServerConsol\\ServerCore\\Types.h",
-              "RelativeDocumentMoniker": "ServerCore\\Types.h",
-              "ToolTip": "D:\\Transcend\\GitHub_desktop\\Server_StudyProject\\ServerConsol\\ServerCore\\Types.h",
-              "RelativeToolTip": "ServerCore\\Types.h",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAMAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-04-25T15:20:00.953Z"
-            }
-          ]
-        },
-        {
-          "DockedWidth": 186,
-          "SelectedChildIndex": 0,
-          "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "UserManager.cpp",
-              "DocumentMoniker": "D:\\Transcend\\GitHub_desktop\\Server_StudyProject\\ServerConsol\\ServerConsol\\UserManager.cpp",
-              "RelativeDocumentMoniker": "ServerConsol\\UserManager.cpp",
-              "ToolTip": "D:\\Transcend\\GitHub_desktop\\Server_StudyProject\\ServerConsol\\ServerConsol\\UserManager.cpp",
-              "RelativeToolTip": "ServerConsol\\UserManager.cpp",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAABAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-05-06T11:18:17.705Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "UserManager.h",
-              "DocumentMoniker": "D:\\Transcend\\GitHub_desktop\\Server_StudyProject\\ServerConsol\\ServerConsol\\UserManager.h",
-              "RelativeDocumentMoniker": "ServerConsol\\UserManager.h",
-              "ToolTip": "D:\\Transcend\\GitHub_desktop\\Server_StudyProject\\ServerConsol\\ServerConsol\\UserManager.h",
-              "RelativeToolTip": "ServerConsol\\UserManager.h",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAVAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-05-06T10:58:25.235Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "AccountManager.h",
-              "DocumentMoniker": "D:\\Transcend\\GitHub_desktop\\Server_StudyProject\\ServerConsol\\ServerConsol\\AccountManager.h",
-              "RelativeDocumentMoniker": "ServerConsol\\AccountManager.h",
-              "ToolTip": "D:\\Transcend\\GitHub_desktop\\Server_StudyProject\\ServerConsol\\ServerConsol\\AccountManager.h",
-              "RelativeToolTip": "ServerConsol\\AccountManager.h",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAAAgAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-05-06T10:58:16.665Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "AccountManager.cpp",
-              "DocumentMoniker": "D:\\Transcend\\GitHub_desktop\\Server_StudyProject\\ServerConsol\\ServerConsol\\AccountManager.cpp",
-              "RelativeDocumentMoniker": "ServerConsol\\AccountManager.cpp",
-              "ToolTip": "D:\\Transcend\\GitHub_desktop\\Server_StudyProject\\ServerConsol\\ServerConsol\\AccountManager.cpp",
-              "RelativeToolTip": "ServerConsol\\AccountManager.cpp",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAbAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-05-06T10:58:26.826Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "CorePCH.cpp",
-              "DocumentMoniker": "D:\\Transcend\\GitHub_desktop\\Server_StudyProject\\ServerConsol\\ServerCore\\CorePCH.cpp",
-              "RelativeDocumentMoniker": "ServerCore\\CorePCH.cpp",
-              "ToolTip": "D:\\Transcend\\GitHub_desktop\\Server_StudyProject\\ServerConsol\\ServerCore\\CorePCH.cpp",
-              "RelativeToolTip": "ServerCore\\CorePCH.cpp",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAABAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-04-25T15:17:31.351Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "pch.cpp",
-              "DocumentMoniker": "D:\\Transcend\\GitHub_desktop\\Server_StudyProject\\ServerConsol\\ServerConsol\\pch.cpp",
-              "RelativeDocumentMoniker": "ServerConsol\\pch.cpp",
-              "ToolTip": "D:\\Transcend\\GitHub_desktop\\Server_StudyProject\\ServerConsol\\ServerConsol\\pch.cpp",
-              "RelativeToolTip": "ServerConsol\\pch.cpp",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAEAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-04-25T15:33:04.868Z"
             }
           ]
         }
