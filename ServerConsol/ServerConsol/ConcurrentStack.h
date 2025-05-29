@@ -54,57 +54,95 @@ template<typename T>
 class LockFreeStack {
 
 	struct Node {
-		Node(const T& value) :data(value) {
-
+		Node(const T& value): data(value), next(NULL) {
 		}
 
 		T data;
 		Node* next;
 	};
 
-
 public:
-	
+
 	void Push(const T& value) {
 		Node* node = new Node(value);
-
-
-		//node->next = _head;
-		////LockFreeStack객체를 동시에 여러 스레드가 사용한다면 해당 과정에서 race condition 발생가능
-		//_head = node;
-
 		node->next = _head;
 
-		while (_head.compare_exchange_strong(node->next, node) == false) {
-			//compare_exchange_strong 사용으로 race condition 발생 시 재수행
-			
+		while (node && _head.compare_exchange_strong(node->next, node) == false) {
+
 		}
-
-	
 	}
-	// head 읽기
-	// head->next 읽기
-	// head= head->next
-	// data를 추출하여 반환
-	// 추출한 노드 삭제
-
 	bool TryPop(T& value) {
+		++_popCount;
 		Node* oldHead = _head;
 
-		while (!oldHead && _head.compare_exchange_strong(oldHead, oldHead->next)==false) {
+		while (oldHead && _head.compare_exchange_strong(oldHead, oldHead->next) == false) {
 
 		}
+		if (oldHead == nullptr) {
+			--_popCount;
+			return false;
+		}
 		value = oldHead->data;
-		
-		
-		//delete oldHead;	//삭제 보류(메모리가 계속해서 늘어난다!!!!)
-		//다른 스레드에서 먼저 이 동작을 수행해버린다면 접근할 데이터가 없어지게 됨
-		//c#, java는 GC가 알아서 메모리 삭제를 진행해주긴 한다.
 
+		TryDelete(oldHead);
 
 		return true;
 	}
 
+
+	//나만 TryPop을 쓰고 있는지 확인
+	// 데이터를 분리한 시점에서 검사하여 현재 스레드에서만 사용중이면 _pendinList의 노드 삭제
+	// 다른 스레드에서도 사용중이라면 분리한 노드 다시 돌려놓는다
+	//다른 스레드에서도 사용중이라면 pendingList에 삭제할 노드를 저장
+	void TryDelete(Node* oldHead) {
+		if (_popCount == 1) {
+			Node* node = _pendingList.exchange(nullptr);
+			if (--_popCount == 0) {
+				DeleteNodes(node);
+			}
+			else if(node) {
+				ChainPendingNodeList(node);
+			}
+			delete oldHead;
+		}
+		else {
+			ChainPendingNode(oldHead);
+		}
+	}
+
+	void DeleteNodes(Node* node) {
+		while (node) {
+			Node* next = node->next;
+			delete node;
+			node = next;
+		}
+
+	}
+	//_pendingList의 last노드에 first 노드를 연결한다(last->next=first)
+	void ChainPendingNodeList(Node* first, Node* last) {
+		last->next = _pendingList;
+		while (_pendingList.compare_exchange_strong(last->next, first) == false) {
+
+		}
+	}
+	//ChainPendingNodeList 헬퍼 함수
+	void ChainPendingNodeList(Node* node) {a
+		Node* last = node;
+		while (last->next) {
+			last = last->next;
+		}
+		ChainPendingNodeList(node, last);
+	}
+	//ChainPendingNodeList를 사용하여 하나의 노드를 _pendingList에 연결하는 함수
+	void ChainPendingNode(Node* node) {
+		ChainPendingNodeList(node, node);
+	}
+
 private:
 	atomic<Node*> _head;
+	
+	atomic<int32> _popCount = 0;
+
+	atomic<Node*> _pendingList;
+
 };
