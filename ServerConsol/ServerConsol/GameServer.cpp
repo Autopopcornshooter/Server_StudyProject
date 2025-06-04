@@ -892,21 +892,25 @@ void Push() {
 
 		s.Push(value);
 
-		this_thread::sleep_for(1ms);
+		//this_thread::sleep_for(1ms);
 	}
 }
 
 void Pop() {
 	while (true) {
 
-		int32 data = 0;
-		if (s.TryPop(data))
-			cout << data << endl;
+		auto data = s.TryPop();	
+		if (data != nullptr) {
+			cout << (*data) << endl;
+		}
 		//TryPop 함수는 data 변수에 스택의 pop의 결과를 넣어주고 bool형을 반환한다
 	}
 }
 
 int main() {
+	shared_ptr<int32> ptr;
+	bool value = atomic_is_lock_free(&ptr);
+	//CPU에서 임의로 lock을 수행하기 때문의 엄연히 말해 LockFree방식의 코딩이 아니다
 
 	thread t1(Push);
 	thread t2(Pop);
