@@ -1,4 +1,14 @@
-﻿  ConcurrentStack.cpp
-  GameServer.cpp
-  코드를 생성하고 있습니다...
-  ServerConsol.vcxproj -> D:\Transcend\GitHub_desktop\Server_StudyProject\ServerConsol\Binary\Debug\GameServer.exe
+﻿  GameServer.cpp
+D:\Transcend\GitHub_desktop\Server_StudyProject\ServerConsol\ServerConsol\ConcurrentStack.h(278,20): error C2338: static_assert failed: 'Compare Occurred'
+  (소스 파일 '/GameServer.cpp'을(를) 컴파일하는 중)
+      D:\Transcend\GitHub_desktop\Server_StudyProject\ServerConsol\ServerConsol\ConcurrentStack.h(278,20):
+      템플릿 인스턴스화 컨텍스트(가장 오래된 인스턴스화 컨텍스트)가
+          D:\Transcend\GitHub_desktop\Server_StudyProject\ServerConsol\ServerConsol\GameServer.cpp(886,22):
+          컴파일되는 클래스 템플릿 인스턴스화 'LockFreeStack<int32>'에 대한 참조를 확인하세요.
+          D:\Transcend\GitHub_desktop\Server_StudyProject\ServerConsol\ServerConsol\ConcurrentStack.h(267,7):
+          클래스 템플릿 멤버 함수 'void LockFreeStack<int32>::IncreaseHeadCount(LockFreeStack<int32>::CountedNodePtr &)'을(를) 컴파일하는 중입니다.
+              D:\Transcend\GitHub_desktop\Server_StudyProject\ServerConsol\ServerConsol\ConcurrentStack.h(226,21):
+              'LockFreeStack<int32>::TryPop'에서 'LockFreeStack<int32>::IncreaseHeadCount'에 대한 첫 번째 참조를 확인하세요.
+              D:\Transcend\GitHub_desktop\Server_StudyProject\ServerConsol\ServerConsol\GameServer.cpp(900,13):
+              'Pop'에서 'LockFreeStack<int32>::TryPop'에 대한 첫 번째 참조를 확인하세요.
+  

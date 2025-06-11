@@ -212,7 +212,6 @@ public:
 		CountedNodePtr node;
 		node.ptr = new Node(value);
 		node.externalCount = 1;
-
 		node.ptr->next = _head;	
 		while (_head.compare_exchange_weak(node.ptr->next, node) == false) {
 			
@@ -262,14 +261,18 @@ public:
 		}
 	}
 
+
+
 private:
 	void IncreaseHeadCount(CountedNodePtr& oldCounter) {
 		while (true) {
-			CountedNodePtr newCounter = oldCounter;
-			newCounter.externalCount++;
-
+			//동시접근 예상부분
+			CountedNodePtr newCounter = oldCounter;	
+			newCounter.externalCount++;	
 			if (_head.compare_exchange_strong(oldCounter, newCounter)) {
-				
+				// 동시접근시 CAS를 먼저 수행한 스레드가 TryPop을 수행
+				// 성공시 _head의 externalCount가 1증가
+				//
 				oldCounter.externalCount = newCounter.externalCount;
 				break;
 			}
