@@ -217,7 +217,8 @@ public:
 		_head.store(node);
 		_tail.store(node);
 	}
-
+	//락프리 큐 선언시 push동작 이전의 노드(dummy)를 생성해준다
+	//head=tail=dummy
 	LockFreeQueue(const LockFreeQueue&) = delete;
 	LockFreeQueue& operator=(const LockFreeQueue&) = delete;
 
@@ -225,18 +226,22 @@ public:
 	// [head][tail]
 	void Push(const T& value)
 	{
+		//데이터 선언 : 순서 상관없는 부분
 		unique_ptr<T> newData = make_unique<T>(value);
 
 		CountedNodePtr dummy;
 		dummy.ptr = new Node;
 		dummy.externalCount = 1;
 
-		CountedNodePtr oldTail = _tail.load(); // ptr = nullptr
-
+		CountedNodePtr oldTail = _tail.load(); // oldtail=tail=dummy
+		
+		//race condition 발생부
 		while (true)
 		{
 			// 참조권 획득 (externalCount를 현시점 기준 +1 한 애가 이김)
+			//참조권 획득 못할 시 함수 내에서 무한루프 진행
 			IncreaseExternalCount(_tail, oldTail);
+			
 
 			// 소유권 획득 (data를 먼저를 교환한 애가 이김)
 			T* oldData = nullptr;
@@ -244,6 +249,9 @@ public:
 			{
 				oldTail.ptr->next = dummy;
 				oldTail = _tail.exchange(dummy);
+				//oldtail의 tail에 대한 참조 메모리를 해제하기 위한 코드(권한 해제)
+				// dummy가 가리키는 값과 _tail이 가리키는 값을 바꿔줌
+				
 				FreeExternalCount(oldTail);
 				newData.release(); // 데이터에 대한 unique_ptr의 소유권 포기
 				break;
@@ -293,9 +301,14 @@ private:
 			CountedNodePtr newCounter = oldCounter;
 			newCounter.externalCount++;
 
+			//if(tail==oldtail)  => tail=newCounter
+			
 			if (counter.compare_exchange_strong(oldCounter, newCounter))
 			{
+				//CAS가 성공하면 counter.externalCount는 증가한 값이 적용되어
+				//다른 스레드에서는 해당 조건문이 무조건 실패하게 된다.
 				oldCounter.externalCount = newCounter.externalCount;
+				//oldCounter==oldtail의 externalCount를 증가시킨다
 				break;
 			}
 		}
