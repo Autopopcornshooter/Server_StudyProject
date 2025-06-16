@@ -877,52 +877,71 @@ int main() {
 //}
 
 //Lock-Based Stack/Queue 실습
+//
+//#include <chrono>
+//#include "ConcurrentQueue.h"
+//#include "ConcurrentStack.h"
+//
+////LockQueue<int32> q;
+//LockFreeStack<int32> s;
+//
+//void Push() {
+//	while (true) {
+//
+//		int32 value = rand() % 100;
+//
+//		s.Push(value);
+//	}
+//}
+//
+//void Pop() {
+//	while (true) {
+//
+//		auto data = s.TryPop();	
+//		if (data != nullptr) {
+//			cout << (*data) << endl;
+//		}
+//		//TryPop 함수는 data 변수에 스택의 pop의 결과를 넣어주고 bool형을 반환한다
+//	}
+//}
+//
+//int main() {
+//	shared_ptr<int32> ptr;
+//	bool value = atomic_is_lock_free(&ptr);
+//	//CPU에서 임의로 lock을 수행하기 때문의 엄연히 말해 LockFree방식의 코딩이 아니다
+//
+//	thread t1(Push);
+//	thread t2(Pop);
+//
+//	thread t3(Pop);
+//	thread t4(Pop);
+//
+//	t1.join();
+//	t2.join();
+//	t3.join();
+//	t4.join();
+//
+//	
+//
+//}
 
-#include <chrono>
-#include "ConcurrentQueue.h"
-#include "ConcurrentStack.h"
 
-LockQueue<int32> q;
-LockFreeStack<int32> s;
+//Reader-Writer Lock 실습
+#include <ThreadManager.h>
 
-void Push() {
+void ThreadMain() {
 	while (true) {
-
-		int32 value = rand() % 100;
-
-		s.Push(value);
+		cout << "HelloWord I am Thread number " << LThreadId << endl;
+		this_thread::sleep_for(1s);
 	}
-}
 
-void Pop() {
-	while (true) {
-
-		auto data = s.TryPop();	
-		if (data != nullptr) {
-			cout << (*data) << endl;
-		}
-		//TryPop 함수는 data 변수에 스택의 pop의 결과를 넣어주고 bool형을 반환한다
-	}
 }
 
 int main() {
-	shared_ptr<int32> ptr;
-	bool value = atomic_is_lock_free(&ptr);
-	//CPU에서 임의로 lock을 수행하기 때문의 엄연히 말해 LockFree방식의 코딩이 아니다
 
-	thread t1(Push);
-	thread t2(Pop);
+	for (int i = 0; i < 5; i++) {
+		GThreadManager->Launch(ThreadMain);
+	}
 
-	thread t3(Pop);
-	thread t4(Pop);
-
-	t1.join();
-	t2.join();
-	t3.join();
-	t4.join();
-
-	
-
+	GThreadManager->Join();
 }
-
-

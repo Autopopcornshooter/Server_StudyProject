@@ -3,12 +3,52 @@
   "WorkspaceRootPath": "C:\\Users\\firet\\Documents\\GitHub\\Server_StudyProject\\ServerConsol\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{7CE524A7-568B-40D1-952F-448FBB9EA02F}|ServerConsol\\ServerConsol.vcxproj|C:\\Users\\firet\\Documents\\GitHub\\Server_StudyProject\\ServerConsol\\ServerConsol\\GameServer.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{7CE524A7-568B-40D1-952F-448FBB9EA02F}|ServerConsol\\ServerConsol.vcxproj|solutionrelative:ServerConsol\\GameServer.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{18C05EDB-9FC7-4B12-9817-B694C3787374}|ServerCore\\ServerCore.vcxproj|C:\\Users\\firet\\Documents\\GitHub\\Server_StudyProject\\ServerConsol\\ServerCore\\CoreGlobal.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{18C05EDB-9FC7-4B12-9817-B694C3787374}|ServerCore\\ServerCore.vcxproj|solutionrelative:ServerCore\\CoreGlobal.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{18C05EDB-9FC7-4B12-9817-B694C3787374}|ServerCore\\ServerCore.vcxproj|C:\\Users\\firet\\Documents\\GitHub\\Server_StudyProject\\ServerConsol\\ServerCore\\CoreGlobal.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{18C05EDB-9FC7-4B12-9817-B694C3787374}|ServerCore\\ServerCore.vcxproj|solutionrelative:ServerCore\\CoreGlobal.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{18C05EDB-9FC7-4B12-9817-B694C3787374}|ServerCore\\ServerCore.vcxproj|C:\\Users\\firet\\Documents\\GitHub\\Server_StudyProject\\ServerConsol\\ServerCore\\CoreMacro.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{18C05EDB-9FC7-4B12-9817-B694C3787374}|ServerCore\\ServerCore.vcxproj|solutionrelative:ServerCore\\CoreMacro.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{7CE524A7-568B-40D1-952F-448FBB9EA02F}|ServerConsol\\ServerConsol.vcxproj|C:\\Users\\firet\\Documents\\GitHub\\Server_StudyProject\\ServerConsol\\ServerConsol\\ConcurrentQueue.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{7CE524A7-568B-40D1-952F-448FBB9EA02F}|ServerConsol\\ServerConsol.vcxproj|solutionrelative:ServerConsol\\ConcurrentQueue.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7CE524A7-568B-40D1-952F-448FBB9EA02F}|ServerConsol\\ServerConsol.vcxproj|C:\\Users\\firet\\Documents\\GitHub\\Server_StudyProject\\ServerConsol\\ServerConsol\\GameServer.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{7CE524A7-568B-40D1-952F-448FBB9EA02F}|ServerConsol\\ServerConsol.vcxproj|solutionrelative:ServerConsol\\GameServer.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{AD66D672-F19C-42DE-B9C5-618D5D8D96CE}|DummyClient\\DummyClient.vcxproj|C:\\Users\\firet\\Documents\\GitHub\\Server_StudyProject\\ServerConsol\\DummyClient\\DummyClient.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{AD66D672-F19C-42DE-B9C5-618D5D8D96CE}|DummyClient\\DummyClient.vcxproj|solutionrelative:DummyClient\\DummyClient.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{18C05EDB-9FC7-4B12-9817-B694C3787374}|ServerCore\\ServerCore.vcxproj|C:\\Users\\firet\\Documents\\GitHub\\Server_StudyProject\\ServerConsol\\ServerCore\\ThreadManager.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{18C05EDB-9FC7-4B12-9817-B694C3787374}|ServerCore\\ServerCore.vcxproj|solutionrelative:ServerCore\\ThreadManager.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{18C05EDB-9FC7-4B12-9817-B694C3787374}|ServerCore\\ServerCore.vcxproj|C:\\Users\\firet\\Documents\\GitHub\\Server_StudyProject\\ServerConsol\\ServerCore\\ThreadManager.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{18C05EDB-9FC7-4B12-9817-B694C3787374}|ServerCore\\ServerCore.vcxproj|solutionrelative:ServerCore\\ThreadManager.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{18C05EDB-9FC7-4B12-9817-B694C3787374}|ServerCore\\ServerCore.vcxproj|C:\\Users\\firet\\Documents\\GitHub\\Server_StudyProject\\ServerConsol\\ServerCore\\Types.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{18C05EDB-9FC7-4B12-9817-B694C3787374}|ServerCore\\ServerCore.vcxproj|solutionrelative:ServerCore\\Types.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{18C05EDB-9FC7-4B12-9817-B694C3787374}|ServerCore\\ServerCore.vcxproj|C:\\Users\\firet\\Documents\\GitHub\\Server_StudyProject\\ServerConsol\\ServerCore\\CoreTLS.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{18C05EDB-9FC7-4B12-9817-B694C3787374}|ServerCore\\ServerCore.vcxproj|solutionrelative:ServerCore\\CoreTLS.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{18C05EDB-9FC7-4B12-9817-B694C3787374}|ServerCore\\ServerCore.vcxproj|C:\\Users\\firet\\Documents\\GitHub\\Server_StudyProject\\ServerConsol\\ServerCore\\CoreTLS.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{18C05EDB-9FC7-4B12-9817-B694C3787374}|ServerCore\\ServerCore.vcxproj|solutionrelative:ServerCore\\CoreTLS.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{18C05EDB-9FC7-4B12-9817-B694C3787374}|ServerCore\\ServerCore.vcxproj|C:\\Users\\firet\\Documents\\GitHub\\Server_StudyProject\\ServerConsol\\ServerCore\\CorePCH.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{18C05EDB-9FC7-4B12-9817-B694C3787374}|ServerCore\\ServerCore.vcxproj|solutionrelative:ServerCore\\CorePCH.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{7CE524A7-568B-40D1-952F-448FBB9EA02F}|ServerConsol\\ServerConsol.vcxproj|C:\\Users\\firet\\Documents\\GitHub\\Server_StudyProject\\ServerConsol\\ServerConsol\\ConcurrentStack.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
@@ -21,12 +61,168 @@
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedWidth": 279,
-          "SelectedChildIndex": 1,
+          "DockedWidth": 228,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "DummyClient.cpp",
+              "DocumentMoniker": "C:\\Users\\firet\\Documents\\GitHub\\Server_StudyProject\\ServerConsol\\DummyClient\\DummyClient.cpp",
+              "RelativeDocumentMoniker": "DummyClient\\DummyClient.cpp",
+              "ToolTip": "C:\\Users\\firet\\Documents\\GitHub\\Server_StudyProject\\ServerConsol\\DummyClient\\DummyClient.cpp",
+              "RelativeToolTip": "DummyClient\\DummyClient.cpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAADAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-06-16T10:25:19.594Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ThreadManager.cpp",
+              "DocumentMoniker": "C:\\Users\\firet\\Documents\\GitHub\\Server_StudyProject\\ServerConsol\\ServerCore\\ThreadManager.cpp",
+              "RelativeDocumentMoniker": "ServerCore\\ThreadManager.cpp",
+              "ToolTip": "C:\\Users\\firet\\Documents\\GitHub\\Server_StudyProject\\ServerConsol\\ServerCore\\ThreadManager.cpp",
+              "RelativeToolTip": "ServerCore\\ThreadManager.cpp",
+              "ViewState": "AQIAABAAAAAgzMzMzMwkwC0AAAAmAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-06-16T10:16:00.264Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Types.h",
+              "DocumentMoniker": "C:\\Users\\firet\\Documents\\GitHub\\Server_StudyProject\\ServerConsol\\ServerCore\\Types.h",
+              "RelativeDocumentMoniker": "ServerCore\\Types.h",
+              "ToolTip": "C:\\Users\\firet\\Documents\\GitHub\\Server_StudyProject\\ServerConsol\\ServerCore\\Types.h",
+              "RelativeToolTip": "ServerCore\\Types.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABQAAAAjAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-06-16T09:54:09.534Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "GameServer.cpp",
+              "DocumentMoniker": "C:\\Users\\firet\\Documents\\GitHub\\Server_StudyProject\\ServerConsol\\ServerConsol\\GameServer.cpp",
+              "RelativeDocumentMoniker": "ServerConsol\\GameServer.cpp",
+              "ToolTip": "C:\\Users\\firet\\Documents\\GitHub\\Server_StudyProject\\ServerConsol\\ServerConsol\\GameServer.cpp",
+              "RelativeToolTip": "ServerConsol\\GameServer.cpp",
+              "ViewState": "AQIAAIIDAAAA8P////8lwLEDAAAYAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-05-28T10:15:41.855Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ConcurrentQueue.h",
+              "DocumentMoniker": "C:\\Users\\firet\\Documents\\GitHub\\Server_StudyProject\\ServerConsol\\ServerConsol\\ConcurrentQueue.h",
+              "RelativeDocumentMoniker": "ServerConsol\\ConcurrentQueue.h",
+              "ToolTip": "C:\\Users\\firet\\Documents\\GitHub\\Server_StudyProject\\ServerConsol\\ServerConsol\\ConcurrentQueue.h",
+              "RelativeToolTip": "ServerConsol\\ConcurrentQueue.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAC8BAAACAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-05-28T10:15:45.689Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "CoreGlobal.h",
+              "DocumentMoniker": "C:\\Users\\firet\\Documents\\GitHub\\Server_StudyProject\\ServerConsol\\ServerCore\\CoreGlobal.h",
+              "RelativeDocumentMoniker": "ServerCore\\CoreGlobal.h",
+              "ToolTip": "C:\\Users\\firet\\Documents\\GitHub\\Server_StudyProject\\ServerConsol\\ServerCore\\CoreGlobal.h",
+              "RelativeToolTip": "ServerCore\\CoreGlobal.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAABUAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-06-16T09:43:29.507Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 2,
+              "Title": "CoreGlobal.cpp",
+              "DocumentMoniker": "C:\\Users\\firet\\Documents\\GitHub\\Server_StudyProject\\ServerConsol\\ServerCore\\CoreGlobal.cpp",
+              "RelativeDocumentMoniker": "ServerCore\\CoreGlobal.cpp",
+              "ToolTip": "C:\\Users\\firet\\Documents\\GitHub\\Server_StudyProject\\ServerConsol\\ServerCore\\CoreGlobal.cpp",
+              "RelativeToolTip": "ServerCore\\CoreGlobal.cpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAdAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-06-16T09:44:32.566Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "CoreMacro.h",
+              "DocumentMoniker": "C:\\Users\\firet\\Documents\\GitHub\\Server_StudyProject\\ServerConsol\\ServerCore\\CoreMacro.h",
+              "RelativeDocumentMoniker": "ServerCore\\CoreMacro.h",
+              "ToolTip": "C:\\Users\\firet\\Documents\\GitHub\\Server_StudyProject\\ServerConsol\\ServerCore\\CoreMacro.h",
+              "RelativeToolTip": "ServerCore\\CoreMacro.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAnAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-06-16T09:43:43.555Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "CoreTLS.cpp",
+              "DocumentMoniker": "C:\\Users\\firet\\Documents\\GitHub\\Server_StudyProject\\ServerConsol\\ServerCore\\CoreTLS.cpp",
+              "RelativeDocumentMoniker": "ServerCore\\CoreTLS.cpp",
+              "ToolTip": "C:\\Users\\firet\\Documents\\GitHub\\Server_StudyProject\\ServerConsol\\ServerCore\\CoreTLS.cpp",
+              "RelativeToolTip": "ServerCore\\CoreTLS.cpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAnAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-06-16T09:52:27.862Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "CoreTLS.h",
+              "DocumentMoniker": "C:\\Users\\firet\\Documents\\GitHub\\Server_StudyProject\\ServerConsol\\ServerCore\\CoreTLS.h",
+              "RelativeDocumentMoniker": "ServerCore\\CoreTLS.h",
+              "ToolTip": "C:\\Users\\firet\\Documents\\GitHub\\Server_StudyProject\\ServerConsol\\ServerCore\\CoreTLS.h",
+              "RelativeToolTip": "ServerCore\\CoreTLS.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAAlAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-06-16T09:43:58.148Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "CorePCH.h",
+              "DocumentMoniker": "C:\\Users\\firet\\Documents\\GitHub\\Server_StudyProject\\ServerConsol\\ServerCore\\CorePCH.h",
+              "RelativeDocumentMoniker": "ServerCore\\CorePCH.h",
+              "ToolTip": "C:\\Users\\firet\\Documents\\GitHub\\Server_StudyProject\\ServerConsol\\ServerCore\\CorePCH.h",
+              "RelativeToolTip": "ServerCore\\CorePCH.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAAAUAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-06-16T09:51:10.533Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "ThreadManager.h",
+              "DocumentMoniker": "C:\\Users\\firet\\Documents\\GitHub\\Server_StudyProject\\ServerConsol\\ServerCore\\ThreadManager.h",
+              "RelativeDocumentMoniker": "ServerCore\\ThreadManager.h",
+              "ToolTip": "C:\\Users\\firet\\Documents\\GitHub\\Server_StudyProject\\ServerConsol\\ServerCore\\ThreadManager.h",
+              "RelativeToolTip": "ServerCore\\ThreadManager.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABoAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-06-16T09:45:00.877Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
               "Title": "ConcurrentStack.h",
               "DocumentMoniker": "C:\\Users\\firet\\Documents\\GitHub\\Server_StudyProject\\ServerConsol\\ServerConsol\\ConcurrentStack.h",
               "RelativeDocumentMoniker": "ServerConsol\\ConcurrentStack.h",
@@ -35,38 +231,6 @@
               "ViewState": "AgIAAKEAAAAAAAAAAAAAAAgBAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2025-05-28T10:15:47.077Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "ConcurrentQueue.h",
-              "DocumentMoniker": "C:\\Users\\firet\\Documents\\GitHub\\Server_StudyProject\\ServerConsol\\ServerConsol\\ConcurrentQueue.h",
-              "RelativeDocumentMoniker": "ServerConsol\\ConcurrentQueue.h",
-              "ToolTip": "C:\\Users\\firet\\Documents\\GitHub\\Server_StudyProject\\ServerConsol\\ServerConsol\\ConcurrentQueue.h",
-              "RelativeToolTip": "ServerConsol\\ConcurrentQueue.h",
-              "ViewState": "AQIAAOkAAACA2zIzMzMLwPIAAAApAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-05-28T10:15:45.689Z",
-              "EditorCaption": ""
-            }
-          ]
-        },
-        {
-          "DockedWidth": 149,
-          "SelectedChildIndex": 0,
-          "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "GameServer.cpp",
-              "DocumentMoniker": "C:\\Users\\firet\\Documents\\GitHub\\Server_StudyProject\\ServerConsol\\ServerConsol\\GameServer.cpp",
-              "RelativeDocumentMoniker": "ServerConsol\\GameServer.cpp",
-              "ToolTip": "C:\\Users\\firet\\Documents\\GitHub\\Server_StudyProject\\ServerConsol\\ServerConsol\\GameServer.cpp",
-              "RelativeToolTip": "ServerConsol\\GameServer.cpp",
-              "ViewState": "AQIAAA0AAAAAAAAAAAAIwB0AAAANAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-05-28T10:15:41.855Z",
-              "EditorCaption": ""
             }
           ]
         }

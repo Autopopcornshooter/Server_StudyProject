@@ -1,3 +1,7 @@
 ﻿  pch.cpp
+  CoreGlobal.cpp
   CorePCH.cpp
-  ServerCore.vcxproj -> D:\Transcend\GitHub_desktop\Server_StudyProject\ServerConsol\Libraries\Debug\ServerCore.lib
+  CoreTLS.cpp
+  ThreadManager.cpp
+  코드를 생성하고 있습니다...
+  ServerCore.vcxproj -> C:\Users\firet\Documents\GitHub\Server_StudyProject\ServerConsol\Libraries\Debug\ServerCore.lib

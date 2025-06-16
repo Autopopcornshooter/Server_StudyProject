@@ -1,5 +1,10 @@
 #pragma once
+
 #include "Types.h"
+#include "CoreMacro.h"
+#include "CoreTLS.h"
+#include "CoreGlobal.h"
+
 #include <vector>
 #include <list>
 #include <queue>
@@ -8,9 +13,7 @@
 #include <set>
 #include <unordered_map>
 #include <unordered_set>
-//기본적으로 사용되는 헤더들 모두 모아준다
 
-#include<iostream>
+#include <windows.h>
+#include <iostream>
 using namespace std;
-
-void HelloWorld();
