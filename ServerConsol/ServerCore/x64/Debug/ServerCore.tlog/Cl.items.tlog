@@ -1,5 +1,6 @@
 C:\Users\firet\Documents\GitHub\Server_StudyProject\ServerConsol\ServerCore\CoreGlobal.cpp;C:\Users\firet\Documents\GitHub\Server_StudyProject\ServerConsol\ServerCore\x64\Debug\CoreGlobal.obj
 C:\Users\firet\Documents\GitHub\Server_StudyProject\ServerConsol\ServerCore\CorePCH.cpp;C:\Users\firet\Documents\GitHub\Server_StudyProject\ServerConsol\ServerCore\x64\Debug\CorePCH.obj
 C:\Users\firet\Documents\GitHub\Server_StudyProject\ServerConsol\ServerCore\CoreTLS.cpp;C:\Users\firet\Documents\GitHub\Server_StudyProject\ServerConsol\ServerCore\x64\Debug\CoreTLS.obj
+C:\Users\firet\Documents\GitHub\Server_StudyProject\ServerConsol\ServerCore\Lock.cpp;C:\Users\firet\Documents\GitHub\Server_StudyProject\ServerConsol\ServerCore\x64\Debug\Lock.obj
 C:\Users\firet\Documents\GitHub\Server_StudyProject\ServerConsol\ServerCore\pch.cpp;C:\Users\firet\Documents\GitHub\Server_StudyProject\ServerConsol\ServerCore\x64\Debug\pch.obj
 C:\Users\firet\Documents\GitHub\Server_StudyProject\ServerConsol\ServerCore\ThreadManager.cpp;C:\Users\firet\Documents\GitHub\Server_StudyProject\ServerConsol\ServerCore\x64\Debug\ThreadManager.obj

@@ -2,7 +2,7 @@
 #include "CoreGlobal.h"
 #include "ThreadManager.h"
 
-ThreadManager* GThreadManager = nullptr;
+
 
 class CoreGlobal
 {

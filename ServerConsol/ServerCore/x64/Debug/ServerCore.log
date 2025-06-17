@@ -1,7 +1,2 @@
-﻿  pch.cpp
-  CoreGlobal.cpp
-  CorePCH.cpp
-  CoreTLS.cpp
-  ThreadManager.cpp
-  코드를 생성하고 있습니다...
+﻿  Lock.cpp
   ServerCore.vcxproj -> C:\Users\firet\Documents\GitHub\Server_StudyProject\ServerConsol\Libraries\Debug\ServerCore.lib
