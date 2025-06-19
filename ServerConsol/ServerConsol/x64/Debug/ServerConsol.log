@@ -1,8 +1,6 @@
-﻿  pch.cpp
-  AccountManager.cpp
-  ConcurrentQueue.cpp
-  ConcurrentStack.cpp
-  GameServer.cpp
+﻿  GameServer.cpp
+C:\Users\firet\Documents\GitHub\Server_StudyProject\ServerConsol\ServerConsol\GameServer.cpp(934,2): error C3646: '_locks': 알 수 없는 재정의 지정자입니다.
+C:\Users\firet\Documents\GitHub\Server_StudyProject\ServerConsol\ServerConsol\GameServer.cpp(934,2): error C2143: 구문 오류: ','이(가) '[' 앞에 없습니다.
+C:\Users\firet\Documents\GitHub\Server_StudyProject\ServerConsol\ServerConsol\GameServer.cpp(934,2): error C2238: ';' 앞에 예기치 않은 토큰이 있습니다.
   UserManager.cpp
   코드를 생성하고 있습니다...
-  ServerConsol.vcxproj -> C:\Users\firet\Documents\GitHub\Server_StudyProject\ServerConsol\Binary\Debug\GameServer.exe

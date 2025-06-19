@@ -927,7 +927,17 @@ int main() {
 
 
 //Reader-Writer Lock 실습
-#include <ThreadManager.h>
+#include "ThreadManager.h"
+
+class TestLock {
+
+	USE_LOCK;
+
+public:
+
+private:
+
+};
 
 void ThreadMain() {
 	while (true) {

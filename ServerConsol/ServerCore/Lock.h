@@ -47,3 +47,26 @@ private:
 	uint16 _writeCount = 0;
 };
 
+/*------------------------------
+
+			LockGuard
+
+------------------------------*/
+
+class ReadLockGuard {
+public:
+	// RAII 패턴 적용
+	ReadLockGuard(Lock& lock) : _lock(lock) { _lock.ReadLock(); }
+	~ReadLockGuard() { _lock.ReadUnlock(); }
+private:
+	Lock& _lock;
+};
+
+class WriteLockGuard {
+public:
+	// RAII 패턴 적용
+	WriteLockGuard(Lock& lock) : _lock(lock) { _lock.WriteLock(); }
+	~WriteLockGuard() { _lock.WriteUnlock(); }
+private:
+	Lock& _lock;
+};

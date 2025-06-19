@@ -1,2 +1,12 @@
-﻿  Lock.cpp
+﻿  pch.cpp
+  CoreGlobal.cpp
+  CorePCH.cpp
+  CoreTLS.cpp
+  Lock.cpp
+  ThreadManager.cpp
+C:\Users\firet\Documents\GitHub\Server_StudyProject\ServerConsol\ServerCore\Lock.cpp(17,41): warning C4244: '초기화 중': 'ULONGLONG'에서 'uint32'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\firet\Documents\GitHub\Server_StudyProject\ServerConsol\ServerCore\Lock.cpp(17,25): warning C4244: '초기화 중': 'ULONGLONG'에서 'const uint32'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\firet\Documents\GitHub\Server_StudyProject\ServerConsol\ServerCore\Lock.cpp(63,41): warning C4244: '초기화 중': 'ULONGLONG'에서 'uint32'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\firet\Documents\GitHub\Server_StudyProject\ServerConsol\ServerCore\Lock.cpp(63,25): warning C4244: '초기화 중': 'ULONGLONG'에서 'const uint32'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  코드를 생성하고 있습니다...
   ServerCore.vcxproj -> C:\Users\firet\Documents\GitHub\Server_StudyProject\ServerConsol\Libraries\Debug\ServerCore.lib
